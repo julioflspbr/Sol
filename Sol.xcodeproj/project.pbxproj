@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		229EC2602840074E009972ED /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EC25F2840074E009972ED /* WeatherService.swift */; };
+		229EC262284007C6009972ED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 229EC261284007C6009972ED /* Info.plist */; };
 		22D9CE80283F94D100C70609 /* SolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE7F283F94D100C70609 /* SolApp.swift */; };
 		22D9CE82283F94D100C70609 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE81283F94D100C70609 /* ContentView.swift */; };
 		22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CE83283F94D400C70609 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		229EC25F2840074E009972ED /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		229EC261284007C6009972ED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22D9CE7C283F94D100C70609 /* Sol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D9CE7F283F94D100C70609 /* SolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolApp.swift; sourceTree = "<group>"; };
 		22D9CE81283F94D100C70609 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,10 +83,11 @@
 		22D9CE7E283F94D100C70609 /* Sol */ = {
 			isa = PBXGroup;
 			children = (
-				22D9CEAC283FD15100C70609 /* WeatherService */,
+				229EC261284007C6009972ED /* Info.plist */,
 				22D9CE81283F94D100C70609 /* ContentView.swift */,
 				22D9CE7F283F94D100C70609 /* SolApp.swift */,
 				22D9CE83283F94D400C70609 /* Assets.xcassets */,
+				22D9CEAC283FD15100C70609 /* WeatherService */,
 			);
 			path = Sol;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 			children = (
 				22D9CEAD283FD19E00C70609 /* WeatherResponse.swift */,
 				22D9CEAF283FDB5F00C70609 /* ForecastResponse.swift */,
+				229EC25F2840074E009972ED /* WeatherService.swift */,
 			);
 			path = WeatherService;
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229EC262284007C6009972ED /* Info.plist in Resources */,
 				22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229EC2602840074E009972ED /* WeatherService.swift in Sources */,
 				22D9CE82283F94D100C70609 /* ContentView.swift in Sources */,
 				22D9CEAE283FD19E00C70609 /* WeatherResponse.swift in Sources */,
 				22D9CE80283F94D100C70609 /* SolApp.swift in Sources */,
