@@ -10,8 +10,9 @@
 		22D9CE80283F94D100C70609 /* SolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE7F283F94D100C70609 /* SolApp.swift */; };
 		22D9CE82283F94D100C70609 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE81283F94D100C70609 /* ContentView.swift */; };
 		22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CE83283F94D400C70609 /* Assets.xcassets */; };
-		22D9CE87283F94D400C70609 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CE86283F94D400C70609 /* Preview Assets.xcassets */; };
 		22D9CE91283F94D500C70609 /* SolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE90283F94D500C70609 /* SolTests.swift */; };
+		22D9CEAE283FD19E00C70609 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CEAD283FD19E00C70609 /* WeatherResponse.swift */; };
+		22D9CEB0283FDB5F00C70609 /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CEAF283FDB5F00C70609 /* ForecastResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,9 +30,10 @@
 		22D9CE7F283F94D100C70609 /* SolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolApp.swift; sourceTree = "<group>"; };
 		22D9CE81283F94D100C70609 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		22D9CE83283F94D400C70609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		22D9CE86283F94D400C70609 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22D9CE8C283F94D500C70609 /* SolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D9CE90283F94D500C70609 /* SolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolTests.swift; sourceTree = "<group>"; };
+		22D9CEAD283FD19E00C70609 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		22D9CEAF283FDB5F00C70609 /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,20 +75,12 @@
 		22D9CE7E283F94D100C70609 /* Sol */ = {
 			isa = PBXGroup;
 			children = (
-				22D9CE7F283F94D100C70609 /* SolApp.swift */,
+				22D9CEAC283FD15100C70609 /* WeatherService */,
 				22D9CE81283F94D100C70609 /* ContentView.swift */,
+				22D9CE7F283F94D100C70609 /* SolApp.swift */,
 				22D9CE83283F94D400C70609 /* Assets.xcassets */,
-				22D9CE85283F94D400C70609 /* Preview Content */,
 			);
 			path = Sol;
-			sourceTree = "<group>";
-		};
-		22D9CE85283F94D400C70609 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				22D9CE86283F94D400C70609 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		22D9CE8F283F94D500C70609 /* SolTests */ = {
@@ -95,6 +89,15 @@
 				22D9CE90283F94D500C70609 /* SolTests.swift */,
 			);
 			path = SolTests;
+			sourceTree = "<group>";
+		};
+		22D9CEAC283FD15100C70609 /* WeatherService */ = {
+			isa = PBXGroup;
+			children = (
+				22D9CEAD283FD19E00C70609 /* WeatherResponse.swift */,
+				22D9CEAF283FDB5F00C70609 /* ForecastResponse.swift */,
+			);
+			path = WeatherService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,7 +181,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22D9CE87283F94D400C70609 /* Preview Assets.xcassets in Resources */,
 				22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,7 +200,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D9CE82283F94D100C70609 /* ContentView.swift in Sources */,
+				22D9CEAE283FD19E00C70609 /* WeatherResponse.swift in Sources */,
 				22D9CE80283F94D100C70609 /* SolApp.swift in Sources */,
+				22D9CEB0283FDB5F00C70609 /* ForecastResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +465,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-/* End XCConfigurationList section */
 	};
 	rootObject = 22D9CE74283F94D100C70609 /* Project object */;
 }
