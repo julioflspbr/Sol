@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		229EC2602840074E009972ED /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EC25F2840074E009972ED /* WeatherService.swift */; };
-		229EC262284007C6009972ED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 229EC261284007C6009972ED /* Info.plist */; };
+		229EC26428400E1F009972ED /* WeatherRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EC26328400E1F009972ED /* WeatherRequests.swift */; };
+		229EC26728400E3C009972ED /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EC26628400E3C009972ED /* NetworkMock.swift */; };
 		22D9CE80283F94D100C70609 /* SolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE7F283F94D100C70609 /* SolApp.swift */; };
 		22D9CE82283F94D100C70609 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE81283F94D100C70609 /* ContentView.swift */; };
 		22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CE83283F94D400C70609 /* Assets.xcassets */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		229EC25F2840074E009972ED /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		229EC261284007C6009972ED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		229EC26328400E1F009972ED /* WeatherRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequests.swift; sourceTree = "<group>"; };
+		229EC26628400E3C009972ED /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
 		22D9CE7C283F94D100C70609 /* Sol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D9CE7F283F94D100C70609 /* SolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolApp.swift; sourceTree = "<group>"; };
 		22D9CE81283F94D100C70609 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		229EC26528400E27009972ED /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				229EC26628400E3C009972ED /* NetworkMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		22D9CE73283F94D100C70609 = {
 			isa = PBXGroup;
 			children = (
@@ -95,8 +106,10 @@
 		22D9CE8F283F94D500C70609 /* SolTests */ = {
 			isa = PBXGroup;
 			children = (
+				229EC26528400E27009972ED /* Mocks */,
 				22D9CEB1283FEB1B00C70609 /* Stubs */,
 				22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */,
+				229EC26328400E1F009972ED /* WeatherRequests.swift */,
 			);
 			path = SolTests;
 			sourceTree = "<group>";
@@ -201,7 +214,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				229EC262284007C6009972ED /* Info.plist in Resources */,
 				22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,7 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229EC26428400E1F009972ED /* WeatherRequests.swift in Sources */,
 				22D9CEB3283FFB0E00C70609 /* ResponseDecoding.swift in Sources */,
+				229EC26728400E3C009972ED /* NetworkMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
