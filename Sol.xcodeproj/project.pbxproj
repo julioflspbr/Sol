@@ -18,6 +18,10 @@
 		22D9CEB3283FFB0E00C70609 /* ResponseDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */; };
 		22D9CEB6283FFCC700C70609 /* forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CEB4283FFCC700C70609 /* forecast.json */; };
 		22D9CEB7283FFCC700C70609 /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CEB5283FFCC700C70609 /* weather.json */; };
+		22E8B99F2840A28A00B1E54C /* LocaleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8B99E2840A28A00B1E54C /* LocaleService.swift */; };
+		22E8B9A12840A29A00B1E54C /* UnitSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8B9A02840A29A00B1E54C /* UnitSystem.swift */; };
+		22E8B9A42840A70700B1E54C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22E8B9A62840A70700B1E54C /* Localizable.strings */; };
+		22F109AB2840C5CD0090224B /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109AA2840C5CD0090224B /* Localisation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,14 @@
 		22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDecoding.swift; sourceTree = "<group>"; };
 		22D9CEB4283FFCC700C70609 /* forecast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forecast.json; sourceTree = "<group>"; };
 		22D9CEB5283FFCC700C70609 /* weather.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weather.json; sourceTree = "<group>"; };
+		22E8B99E2840A28A00B1E54C /* LocaleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleService.swift; sourceTree = "<group>"; };
+		22E8B9A02840A29A00B1E54C /* UnitSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSystem.swift; sourceTree = "<group>"; };
+		22E8B9A52840A70700B1E54C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		22E8B9A82840A92500B1E54C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		22E8B9A92840A92E00B1E54C /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
+		22E8B9AB2840A93000B1E54C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		22F109A22840B7E20090224B /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		22F109AA2840C5CD0090224B /* Localisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +110,7 @@
 				22D9CE81283F94D100C70609 /* ContentView.swift */,
 				22D9CE7F283F94D100C70609 /* SolApp.swift */,
 				22D9CE83283F94D400C70609 /* Assets.xcassets */,
+				22E8B99D2840A23200B1E54C /* LocaleService */,
 				22D9CEAC283FD15100C70609 /* WeatherService */,
 			);
 			path = Sol;
@@ -106,10 +119,11 @@
 		22D9CE8F283F94D500C70609 /* SolTests */ = {
 			isa = PBXGroup;
 			children = (
-				229EC26528400E27009972ED /* Mocks */,
-				22D9CEB1283FEB1B00C70609 /* Stubs */,
+				22F109AA2840C5CD0090224B /* Localisation.swift */,
 				22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */,
 				229EC26328400E1F009972ED /* WeatherRequests.swift */,
+				229EC26528400E27009972ED /* Mocks */,
+				22D9CEB1283FEB1B00C70609 /* Stubs */,
 			);
 			path = SolTests;
 			sourceTree = "<group>";
@@ -131,6 +145,16 @@
 				22D9CEB5283FFCC700C70609 /* weather.json */,
 			);
 			path = Stubs;
+			sourceTree = "<group>";
+		};
+		22E8B99D2840A23200B1E54C /* LocaleService */ = {
+			isa = PBXGroup;
+			children = (
+				22E8B99E2840A28A00B1E54C /* LocaleService.swift */,
+				22E8B9A02840A29A00B1E54C /* UnitSystem.swift */,
+				22E8B9A62840A70700B1E54C /* Localizable.strings */,
+			);
+			path = LocaleService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,11 +216,14 @@
 			};
 			buildConfigurationList = 22D9CE77283F94D100C70609 /* Build configuration list for PBXProject "Sol" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = "en-GB";
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				"en-GB",
 				en,
-				Base,
+				he,
+				es,
+				"pt-BR",
 			);
 			mainGroup = 22D9CE73283F94D100C70609;
 			productRefGroup = 22D9CE7D283F94D100C70609 /* Products */;
@@ -215,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */,
+				22E8B9A42840A70700B1E54C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +263,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				229EC2602840074E009972ED /* WeatherService.swift in Sources */,
+				22E8B9A12840A29A00B1E54C /* UnitSystem.swift in Sources */,
+				22E8B99F2840A28A00B1E54C /* LocaleService.swift in Sources */,
 				22D9CE82283F94D100C70609 /* ContentView.swift in Sources */,
 				22D9CEAE283FD19E00C70609 /* WeatherResponse.swift in Sources */,
 				22D9CE80283F94D100C70609 /* SolApp.swift in Sources */,
@@ -249,6 +279,7 @@
 				229EC26428400E1F009972ED /* WeatherRequests.swift in Sources */,
 				22D9CEB3283FFB0E00C70609 /* ResponseDecoding.swift in Sources */,
 				229EC26728400E3C009972ED /* NetworkMock.swift in Sources */,
+				22F109AB2840C5CD0090224B /* Localisation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,11 +293,27 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		22E8B9A62840A70700B1E54C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22E8B9A52840A70700B1E54C /* en */,
+				22E8B9A82840A92500B1E54C /* es */,
+				22E8B9A92840A92E00B1E54C /* he */,
+				22E8B9AB2840A93000B1E54C /* pt-BR */,
+				22F109A22840B7E20090224B /* en-GB */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		22D9CE9E283F94D500C70609 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -327,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -514,6 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+/* End XCConfigurationList section */
 	};
 	rootObject = 22D9CE74283F94D100C70609 /* Project object */;
 }
