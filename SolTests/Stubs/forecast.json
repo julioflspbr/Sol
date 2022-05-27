@@ -1,0 +1,131 @@
+{
+  "cod": "200",
+  "message": 0,
+  "cnt": 40,
+  "list": [
+    {
+      "dt": 1653577200,
+      "main": {
+        "temp": 286.72,
+        "feels_like": 286.09,
+        "temp_min": 286.72,
+        "temp_max": 287.64,
+        "pressure": 1011,
+        "sea_level": 1011,
+        "grnd_level": 1010,
+        "humidity": 75,
+        "temp_kf": -0.92
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "clouds": {
+        "all": 75
+      },
+      "wind": {
+        "speed": 10.31,
+        "deg": 272,
+        "gust": 14.27
+      },
+      "visibility": 10000,
+      "pop": 0.52,
+      "rain": {
+        "3h": 0.24
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2022-05-26 15:00:00"
+    },
+    {
+      "dt": 1653588000,
+      "main": {
+        "temp": 286.54,
+        "feels_like": 285.81,
+        "temp_min": 286.18,
+        "temp_max": 286.54,
+        "pressure": 1011,
+        "sea_level": 1011,
+        "grnd_level": 1010,
+        "humidity": 72,
+        "temp_kf": 0.36
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "broken clouds",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 59
+      },
+      "wind": {
+        "speed": 9.12,
+        "deg": 270,
+        "gust": 12.75
+      },
+      "visibility": 10000,
+      "pop": 0.35,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2022-05-26 18:00:00"
+    },
+    {
+      "dt": 1653598800,
+      "main": {
+        "temp": 285.07,
+        "feels_like": 284.25,
+        "temp_min": 284.24,
+        "temp_max": 285.07,
+        "pressure": 1010,
+        "sea_level": 1010,
+        "grnd_level": 1010,
+        "humidity": 74,
+        "temp_kf": 0.83
+      },
+      "weather": [
+        {
+          "id": 802,
+          "main": "Sun",
+          "description": "sky clear",
+          "icon": "03n"
+        }
+      ],
+      "clouds": {
+        "all": 46
+      },
+      "wind": {
+        "speed": 7.92,
+        "deg": 259,
+        "gust": 12.42
+      },
+      "visibility": 8670,
+      "pop": 0,
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2022-05-26 21:00:00"
+    }
+  ],
+  "city": {
+    "id": 2611861,
+    "name": "Tårnby Kommune",
+    "coord": {
+      "lat": 55.6178,
+      "lon": 12.5702
+    },
+    "country": "DK",
+    "population": 41022,
+    "timezone": 7200,
+    "sunrise": 1653532907,
+    "sunset": 1653593522
+  }
+}

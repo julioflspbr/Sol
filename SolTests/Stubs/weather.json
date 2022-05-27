@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": 12.5702,
+    "lat": 55.6178
+  },
+  "weather": [
+    {
+      "id": 802,
+      "main": "Clouds",
+      "description": "scattered clouds",
+      "icon": "03d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 287.4,
+    "feels_like": 286.86,
+    "temp_min": 287.06,
+    "temp_max": 288.46,
+    "pressure": 1011,
+    "humidity": 76
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 2.24,
+    "deg": 305
+  },
+  "clouds": {
+    "all": 45
+  },
+  "dt": 1653577971,
+  "sys": {
+    "type": 2,
+    "id": 2005001,
+    "country": "DK",
+    "sunrise": 1653532907,
+    "sunset": 1653593522
+  },
+  "timezone": 7200,
+  "id": 2611861,
+  "name": "Tårnby Kommune",
+  "cod": 200
+}

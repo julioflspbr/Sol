@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		229EC2602840074E009972ED /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EC25F2840074E009972ED /* WeatherService.swift */; };
+		229EC26428400E1F009972ED /* WeatherRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EC26328400E1F009972ED /* WeatherRequests.swift */; };
+		229EC26728400E3C009972ED /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EC26628400E3C009972ED /* NetworkMock.swift */; };
 		22D9CE80283F94D100C70609 /* SolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE7F283F94D100C70609 /* SolApp.swift */; };
 		22D9CE82283F94D100C70609 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE81283F94D100C70609 /* ContentView.swift */; };
 		22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CE83283F94D400C70609 /* Assets.xcassets */; };
-		22D9CE87283F94D400C70609 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CE86283F94D400C70609 /* Preview Assets.xcassets */; };
-		22D9CE91283F94D500C70609 /* SolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CE90283F94D500C70609 /* SolTests.swift */; };
+		22D9CEAE283FD19E00C70609 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CEAD283FD19E00C70609 /* WeatherResponse.swift */; };
+		22D9CEB0283FDB5F00C70609 /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CEAF283FDB5F00C70609 /* ForecastResponse.swift */; };
+		22D9CEB3283FFB0E00C70609 /* ResponseDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */; };
+		22D9CEB6283FFCC700C70609 /* forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CEB4283FFCC700C70609 /* forecast.json */; };
+		22D9CEB7283FFCC700C70609 /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D9CEB5283FFCC700C70609 /* weather.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,13 +31,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		229EC25F2840074E009972ED /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		229EC261284007C6009972ED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		229EC26328400E1F009972ED /* WeatherRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequests.swift; sourceTree = "<group>"; };
+		229EC26628400E3C009972ED /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
 		22D9CE7C283F94D100C70609 /* Sol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D9CE7F283F94D100C70609 /* SolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolApp.swift; sourceTree = "<group>"; };
 		22D9CE81283F94D100C70609 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		22D9CE83283F94D400C70609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		22D9CE86283F94D400C70609 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22D9CE8C283F94D500C70609 /* SolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		22D9CE90283F94D500C70609 /* SolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolTests.swift; sourceTree = "<group>"; };
+		22D9CEAD283FD19E00C70609 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		22D9CEAF283FDB5F00C70609 /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
+		22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDecoding.swift; sourceTree = "<group>"; };
+		22D9CEB4283FFCC700C70609 /* forecast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forecast.json; sourceTree = "<group>"; };
+		22D9CEB5283FFCC700C70609 /* weather.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weather.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		229EC26528400E27009972ED /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				229EC26628400E3C009972ED /* NetworkMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		22D9CE73283F94D100C70609 = {
 			isa = PBXGroup;
 			children = (
@@ -73,28 +94,43 @@
 		22D9CE7E283F94D100C70609 /* Sol */ = {
 			isa = PBXGroup;
 			children = (
-				22D9CE7F283F94D100C70609 /* SolApp.swift */,
+				229EC261284007C6009972ED /* Info.plist */,
 				22D9CE81283F94D100C70609 /* ContentView.swift */,
+				22D9CE7F283F94D100C70609 /* SolApp.swift */,
 				22D9CE83283F94D400C70609 /* Assets.xcassets */,
-				22D9CE85283F94D400C70609 /* Preview Content */,
+				22D9CEAC283FD15100C70609 /* WeatherService */,
 			);
 			path = Sol;
-			sourceTree = "<group>";
-		};
-		22D9CE85283F94D400C70609 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				22D9CE86283F94D400C70609 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		22D9CE8F283F94D500C70609 /* SolTests */ = {
 			isa = PBXGroup;
 			children = (
-				22D9CE90283F94D500C70609 /* SolTests.swift */,
+				229EC26528400E27009972ED /* Mocks */,
+				22D9CEB1283FEB1B00C70609 /* Stubs */,
+				22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */,
+				229EC26328400E1F009972ED /* WeatherRequests.swift */,
 			);
 			path = SolTests;
+			sourceTree = "<group>";
+		};
+		22D9CEAC283FD15100C70609 /* WeatherService */ = {
+			isa = PBXGroup;
+			children = (
+				22D9CEAD283FD19E00C70609 /* WeatherResponse.swift */,
+				22D9CEAF283FDB5F00C70609 /* ForecastResponse.swift */,
+				229EC25F2840074E009972ED /* WeatherService.swift */,
+			);
+			path = WeatherService;
+			sourceTree = "<group>";
+		};
+		22D9CEB1283FEB1B00C70609 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				22D9CEB4283FFCC700C70609 /* forecast.json */,
+				22D9CEB5283FFCC700C70609 /* weather.json */,
+			);
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,7 +214,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22D9CE87283F94D400C70609 /* Preview Assets.xcassets in Resources */,
 				22D9CE84283F94D400C70609 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +222,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D9CEB7283FFCC700C70609 /* weather.json in Resources */,
+				22D9CEB6283FFCC700C70609 /* forecast.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +234,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229EC2602840074E009972ED /* WeatherService.swift in Sources */,
 				22D9CE82283F94D100C70609 /* ContentView.swift in Sources */,
+				22D9CEAE283FD19E00C70609 /* WeatherResponse.swift in Sources */,
 				22D9CE80283F94D100C70609 /* SolApp.swift in Sources */,
+				22D9CEB0283FDB5F00C70609 /* ForecastResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22D9CE91283F94D500C70609 /* SolTests.swift in Sources */,
+				229EC26428400E1F009972ED /* WeatherRequests.swift in Sources */,
+				22D9CEB3283FFB0E00C70609 /* ResponseDecoding.swift in Sources */,
+				229EC26728400E3C009972ED /* NetworkMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +384,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Sol/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sol/Info.plist;
@@ -371,7 +412,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Sol/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sol/Info.plist;
@@ -398,14 +438,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lab.lalalones.SolTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sol.app/Sol";
@@ -417,10 +464,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lab.lalalones.SolTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,7 +514,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-/* End XCConfigurationList section */
 	};
 	rootObject = 22D9CE74283F94D100C70609 /* Project object */;
 }
