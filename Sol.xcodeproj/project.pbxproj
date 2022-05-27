@@ -25,6 +25,7 @@
 		22F109B02840C7210090224B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109AF2840C7210090224B /* Weather.swift */; };
 		22F109B22840C9820090224B /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109B12840C9820090224B /* WeatherData.swift */; };
 		22F109B42840CF4E0090224B /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109B32840CF4E0090224B /* WeatherProvider.swift */; };
+		22F109B62840D5640090224B /* WeatherProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109B52840D5640090224B /* WeatherProviderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		22F109AF2840C7210090224B /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		22F109B12840C9820090224B /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		22F109B32840CF4E0090224B /* WeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
+		22F109B52840D5640090224B /* WeatherProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProviderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */,
 				229EC26328400E1F009972ED /* WeatherRequests.swift */,
 				22F109B12840C9820090224B /* WeatherData.swift */,
+				22F109B52840D5640090224B /* WeatherProviderTests.swift */,
 				229EC26528400E27009972ED /* Mocks */,
 				22D9CEB1283FEB1B00C70609 /* Stubs */,
 			);
@@ -298,6 +301,7 @@
 				229EC26428400E1F009972ED /* WeatherRequests.swift in Sources */,
 				22D9CEB3283FFB0E00C70609 /* ResponseDecoding.swift in Sources */,
 				229EC26728400E3C009972ED /* NetworkMock.swift in Sources */,
+				22F109B62840D5640090224B /* WeatherProviderTests.swift in Sources */,
 				22F109AB2840C5CD0090224B /* Localisation.swift in Sources */,
 				22F109B22840C9820090224B /* WeatherData.swift in Sources */,
 			);
