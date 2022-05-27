@@ -22,6 +22,7 @@
 		22E8B9A12840A29A00B1E54C /* UnitSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8B9A02840A29A00B1E54C /* UnitSystem.swift */; };
 		22E8B9A42840A70700B1E54C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22E8B9A62840A70700B1E54C /* Localizable.strings */; };
 		22F109AB2840C5CD0090224B /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109AA2840C5CD0090224B /* Localisation.swift */; };
+		22F109B02840C7210090224B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109AF2840C7210090224B /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		22E8B9AB2840A93000B1E54C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		22F109A22840B7E20090224B /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		22F109AA2840C5CD0090224B /* Localisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
+		22F109AF2840C7210090224B /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				22D9CE7F283F94D100C70609 /* SolApp.swift */,
 				22D9CE83283F94D400C70609 /* Assets.xcassets */,
 				22E8B99D2840A23200B1E54C /* LocaleService */,
+				22F109AE2840C7210090224B /* WeatherProvider */,
 				22D9CEAC283FD15100C70609 /* WeatherService */,
 			);
 			path = Sol;
@@ -155,6 +158,14 @@
 				22E8B9A62840A70700B1E54C /* Localizable.strings */,
 			);
 			path = LocaleService;
+			sourceTree = "<group>";
+		};
+		22F109AE2840C7210090224B /* WeatherProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22F109AF2840C7210090224B /* Weather.swift */,
+			);
+			path = WeatherProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22F109B02840C7210090224B /* Weather.swift in Sources */,
 				229EC2602840074E009972ED /* WeatherService.swift in Sources */,
 				22E8B9A12840A29A00B1E54C /* UnitSystem.swift in Sources */,
 				22E8B99F2840A28A00B1E54C /* LocaleService.swift in Sources */,
