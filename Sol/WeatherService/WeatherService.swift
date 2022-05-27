@@ -8,13 +8,6 @@
 import MapKit
 import Foundation
 
-protocol NetworkSession {
-    func data(from url: URL, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse)
-}
-
-extension URLSession: NetworkSession {
-}
-
 final class WeatherService {
     enum Error: Swift.Error {
         case missingApiURL
@@ -22,11 +15,13 @@ final class WeatherService {
         case malFormedURL
     }
     
-    let apiURL: String
-    let apiKey: String
-    let networkSession: NetworkSession
+    private let networkSession: NetworkSession
     
-    init(networkSession: NetworkSession = URLSession.shared) throws {
+    let apiURL: String
+    
+    let apiKey: String
+    
+    init(networkSession: NetworkSession) throws {
         guard let apiURL = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_URL") as? String else {
             throw Error.missingApiURL
         }
