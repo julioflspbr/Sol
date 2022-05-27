@@ -10,7 +10,7 @@ import Foundation
 final class LocaleService {
     static let weatherStandards = UnitSystem(temperature: .kelvin, pressure: .hectopascals, distance: .meters, speed: .metersPerSecond)
     
-    static let metricStandards = UnitSystem(temperature: .celsius, pressure: .hectopascals, distance: .meters, speed: .kilometersPerHour)
+    static let metricStandards = UnitSystem(temperature: .celsius, pressure: .hectopascals, distance: .kilometers, speed: .kilometersPerHour)
     
     static let imperialStandards = UnitSystem(temperature: .fahrenheit, pressure: .millibars, distance: .miles, speed: .milesPerHour)
     
@@ -18,13 +18,7 @@ final class LocaleService {
     
     private let localBundle: Bundle
     
-    var unitSystem: UnitSystem {
-        if self.locale.usesMetricSystem {
-            return Self.metricStandards
-        } else {
-            return Self.imperialStandards
-        }
-    }
+    let unitSystem: UnitSystem
     
     init(locale: Locale = .current) {
         if Bundle.main.localizations.contains(locale.identifier) {
@@ -41,6 +35,12 @@ final class LocaleService {
         }
         
         self.localBundle = localBundle
+        
+        if self.locale.usesMetricSystem {
+            self.unitSystem = Self.metricStandards
+        } else {
+            self.unitSystem = Self.imperialStandards
+        }
     }
     
     subscript(_ key: String) -> String {
