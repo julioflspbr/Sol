@@ -23,6 +23,7 @@
 		22E8B9A42840A70700B1E54C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22E8B9A62840A70700B1E54C /* Localizable.strings */; };
 		22F109AB2840C5CD0090224B /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109AA2840C5CD0090224B /* Localisation.swift */; };
 		22F109B02840C7210090224B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109AF2840C7210090224B /* Weather.swift */; };
+		22F109B22840C9820090224B /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F109B12840C9820090224B /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		22F109A22840B7E20090224B /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		22F109AA2840C5CD0090224B /* Localisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
 		22F109AF2840C7210090224B /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		22F109B12840C9820090224B /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				22F109AA2840C5CD0090224B /* Localisation.swift */,
 				22D9CEB2283FFB0E00C70609 /* ResponseDecoding.swift */,
 				229EC26328400E1F009972ED /* WeatherRequests.swift */,
+				22F109B12840C9820090224B /* WeatherData.swift */,
 				229EC26528400E27009972ED /* Mocks */,
 				22D9CEB1283FEB1B00C70609 /* Stubs */,
 			);
@@ -292,6 +295,7 @@
 				22D9CEB3283FFB0E00C70609 /* ResponseDecoding.swift in Sources */,
 				229EC26728400E3C009972ED /* NetworkMock.swift in Sources */,
 				22F109AB2840C5CD0090224B /* Localisation.swift in Sources */,
+				22F109B22840C9820090224B /* WeatherData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
