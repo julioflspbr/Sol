@@ -16,43 +16,43 @@ struct TopView: View {
 
     var body: some View {
         VStack {
-            VStack {
-                HStack {
-                    weatherIcon
-                        .frame(width: 120, height: 100)
-                        .padding(.horizontal)
+            HStack {
+                weatherIcon
+                    .frame(width: 100, height: 100)
+                    .padding(.horizontal)
 
-                    VStack(alignment: .leading) {
-                        Text("\(weather.temperature) \(weather.temperatureSymbol)")
-                            .font(.system(size: 30))
-                            .foregroundColor(Theme.Colour.text)
+                VStack(alignment: .leading) {
+                    Text("\(weather.temperature) \(weather.temperatureSymbol)")
+                        .font(.system(size: 30))
+                        .foregroundColor(Theme.Colour.text)
 
-                        Text("\(weather.city), \(weather.country)")
-                            .font(.system(size: 15))
-                            .foregroundColor(Theme.Colour.text)
-                    }
-                    .frame(minHeight: 100)
-
-                    Spacer()
+                    Text("\(weather.city), \(weather.country)")
+                        .font(.system(size: 15))
+                        .foregroundColor(Theme.Colour.text)
                 }
+                .frame(minHeight: 100)
 
-                Capsule()
-                    .foregroundColor(Theme.Colour.dragHandler)
-                    .frame(width: 40, height: 5, alignment: .center)
-                    .padding(.bottom, 10)
-            }
-            .background {
-                Theme.Colour.background
-                    .blur(radius: 7)
-                    .ignoresSafeArea()
+                Spacer()
             }
 
-
-            Spacer()
+            Capsule()
+                .foregroundColor(Theme.Colour.dragHandler)
+                .frame(width: 40, height: 5, alignment: .center)
+                .padding(.bottom, 10)
+        }
+        .background {
+            LinearGradient(
+                colors: [Theme.Colour.background, Theme.Colour.background.opacity(0.3)],
+                startPoint: .center,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
         }
         .frame(maxWidth: .infinity)
-        .background(Color.gray)
         .onAppear {
+            self.viewModel.fetchWeatherIcon(provider: weatherProvider, weather: self.weather)
+        }
+        .onChange(of: weather) { (weather) in
             self.viewModel.fetchWeatherIcon(provider: weatherProvider, weather: weather)
         }
     }
@@ -73,24 +73,32 @@ struct TopView: View {
 
 struct TopView_Previews: PreviewProvider {
     static var previews: some View {
-        TopView(weather: Weather(
-            date: Date(),
-            city: "London",
-            country: "UK",
-            weather: "",
-            icon: "03d",
-            humidity: 0,
-            windDirection: 0,
-            visibility: 0,
-            temperature: 12,
-            minTemperature: 0,
-            maxTemperature: 0,
-            realFeel: 0,
-            pressure: 0,
-            windSpeed: 0,
-            pressureSymbol: "",
-            speedSymbol: "",
-            temperatureSymbol: "ºC"
-        ))
+        VStack {
+            TopView(weather: Weather(
+                date: Date(),
+                city: "London",
+                country: "UK",
+                weather: "",
+                icon: "03d",
+                humidity: 0,
+                windDirection: 0,
+                visibility: 0,
+                temperature: 12,
+                minTemperature: 0,
+                maxTemperature: 0,
+                realFeel: 0,
+                pressure: 0,
+                windSpeed: 0,
+                pressureSymbol: "",
+                speedSymbol: "",
+                temperatureSymbol: "ºC"
+            ))
+            .environmentObject(try! WeatherProvider())
+
+            Spacer()
+        }
+        .background {
+            Color.gray.ignoresSafeArea()
+        }
     }
 }

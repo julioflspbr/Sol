@@ -22,7 +22,10 @@ final class TopViewModel: ObservableObject {
                 }
             } catch {
                 print("WARNING: failed to download weather icon: \(error)")
-                weatherIcon = Self.errorImage
+                await MainActor.run {
+                    self.weatherIcon = Self.errorImage
+                }
+
             }
         }
     }

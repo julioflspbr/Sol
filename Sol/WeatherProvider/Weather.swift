@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Weather {
+struct Weather: Equatable {
     // MARK: - Place & Weather info
     
     let date: Date

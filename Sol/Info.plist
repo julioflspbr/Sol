@@ -7,6 +7,6 @@
 	<key>WEATHER_API_URL</key>
 	<string>https://api.openweathermap.org/data/2.5</string>
 	<key>WEATHER_ICON_URL</key>
-	<string>http://openweathermap.org/img/wn</string>
+	<string>https://openweathermap.org/img/wn</string>
 </dict>
 </plist>
