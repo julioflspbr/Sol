@@ -11,7 +11,7 @@ import SwiftUI
 struct SolApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
