@@ -13,6 +13,8 @@ struct MainView: View {
 
     @StateObject private var viewModel = MainViewModel()
 
+    @State private var selectedIndex: Int = 0
+
     var body: some View {
         ZStack {
             Map(coordinateRegion: $viewModel.location)
@@ -23,16 +25,19 @@ struct MainView: View {
                 }
 
             VStack {
-                if let currentWeather = viewModel.weatherData.first {
-                    TopView(weather: currentWeather)
+                if viewModel.weatherData.count > 0 {
+                    TopView(weatherIndex: $selectedIndex, weatherData: viewModel.weatherData)
                 }
 
                 Spacer()
 
-                if let currentWeather = viewModel.weatherData.first {
-                    BottomView(weather: currentWeather)
+                if viewModel.weatherData.count > 0 {
+                    BottomView(weatherIndex: $selectedIndex, weatherData: viewModel.weatherData)
                 }
             }
+        }
+        .onChange(of: viewModel.weatherData) { _ in
+            self.selectedIndex = 0
         }
     }
 }

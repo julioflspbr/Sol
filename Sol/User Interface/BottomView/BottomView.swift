@@ -10,7 +10,13 @@ import SwiftUI
 struct BottomView: View {
     @EnvironmentObject private var locale: LocaleService
 
-    let weather: Weather
+    @Binding private(set) var weatherIndex: Int
+
+    let weatherData: [Weather]
+
+    private var weather: Weather {
+        self.weatherData[self.weatherIndex]
+    }
 
     private let dateFormater: DateFormatter = {
         let formatter = DateFormatter()
@@ -77,13 +83,16 @@ struct BottomView: View {
         HStack {
             Button(
                 action: {
-
+                    if self.weatherIndex > 0 {
+                        self.weatherIndex -= 1
+                    }
                 },
                 label: {
                     Image(systemName: "chevron.left")
                 }
             )
-            .foregroundColor(Theme.Colour.primary)
+            .foregroundColor(weatherIndex <= 0 ? Theme.Colour.disabled : Theme.Colour.primary)
+            .disabled(weatherIndex <= 0)
 
             Spacer()
 
@@ -95,13 +104,16 @@ struct BottomView: View {
 
             Button(
                 action: {
-
+                    if self.weatherIndex < self.weatherData.count - 1 {
+                        self.weatherIndex += 1
+                    }
                 },
                 label: {
                     Image(systemName: "chevron.right")
                 }
             )
-            .foregroundColor(Theme.Colour.primary)
+            .foregroundColor(weatherIndex >= weatherData.count - 1 ? Theme.Colour.disabled : Theme.Colour.primary)
+            .disabled(weatherIndex >= weatherData.count - 1)
         }
         .padding()
     }
@@ -143,26 +155,29 @@ struct BottomView_Previews: PreviewProvider {
         VStack {
             Spacer()
 
-            BottomView(weather: Weather(
-                date: .now,
-                city: "London",
-                country: "UK",
-                weather: "",
-                icon: "03d",
-                humidity: 78,
-                windDirection: 180,
-                visibility: 7,
-                temperature: 12,
-                minTemperature: 5,
-                maxTemperature: 20,
-                realFeel: 10,
-                pressure: 1013,
-                windSpeed: 13,
-                pressureSymbol: "hPa",
-                speedSymbol: "km/h",
-                temperatureSymbol: "ºC",
-                distanceSymbol: "km"
-            ))
+            BottomView(
+                weatherIndex: .constant(0),
+                weatherData: [Weather(
+                    date: Date(),
+                    city: "London",
+                    country: "UK",
+                    weather: "",
+                    icon: "03d",
+                    humidity: 0,
+                    windDirection: 0,
+                    visibility: 0,
+                    temperature: 12,
+                    minTemperature: 0,
+                    maxTemperature: 0,
+                    realFeel: 0,
+                    pressure: 0,
+                    windSpeed: 0,
+                    pressureSymbol: "",
+                    speedSymbol: "",
+                    temperatureSymbol: "ºC",
+                    distanceSymbol: ""
+                )]
+            )
             .environmentObject(try! WeatherProvider())
             .environmentObject(LocaleService())
         }
