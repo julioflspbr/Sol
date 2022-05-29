@@ -9,14 +9,16 @@ import MapKit
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject private var weatherProvider: WeatherProvider
+
     @StateObject private var viewModel = MainViewModel()
 
     var body: some View {
         Map(coordinateRegion: $viewModel.location)
             .ignoresSafeArea()
-            .onAppear(perform: self.viewModel.requestLocation)
+            .onAppear(perform: viewModel.requestLocation)
             .onChange(of: viewModel.location) { (newLocation) in
-                print("Location changed: \(newLocation)")
+                self.viewModel.requestWeather(for: newLocation, weatherProvider: self.weatherProvider)
             }
     }
 }
