@@ -12,7 +12,8 @@ struct MainView: View {
     @StateObject private var viewModel = MainViewModel()
 
     var body: some View {
-        MapView(location: $viewModel.location)
+        Map(coordinateRegion: $viewModel.location)
+            .ignoresSafeArea()
             .onAppear(perform: self.viewModel.requestLocation)
             .onChange(of: viewModel.location) { (newLocation) in
                 print("Location changed: \(newLocation)")

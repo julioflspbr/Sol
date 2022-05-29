@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22032DBF28437C4600C57AC2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22032DBE28437C4600C57AC2 /* Theme.swift */; };
 		228C18A82842BE2D0092F865 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 228C18AA2842BE2D0092F865 /* InfoPlist.strings */; };
-		228C18B02842BFD20092F865 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C18AF2842BFD20092F865 /* MapView.swift */; };
 		228C18B32842BFF00092F865 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C18B22842BFF00092F865 /* MainViewModel.swift */; };
 		228C18B52842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C18B42842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift */; };
 		229EC2602840074E009972ED /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229EC25F2840074E009972ED /* WeatherService.swift */; };
@@ -43,12 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22032DBE28437C4600C57AC2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		228C18A92842BE2D0092F865 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		228C18AB2842BE4C0092F865 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		228C18AC2842BE4D0092F865 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		228C18AD2842BE4E0092F865 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		228C18AE2842BE4F0092F865 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		228C18AF2842BFD20092F865 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		228C18B22842BFF00092F865 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		228C18B42842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Equatable.swift"; sourceTree = "<group>"; };
 		229EC25F2840074E009972ED /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
@@ -109,9 +109,9 @@
 		228C18A32842B9390092F865 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				22032DBE28437C4600C57AC2 /* Theme.swift */,
 				228C18B62842CF8D0092F865 /* Extensions */,
 				22032DB928436DF600C57AC2 /* MainView */,
-				228C18AF2842BFD20092F865 /* MapView.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -329,10 +329,10 @@
 				22E8B99F2840A28A00B1E54C /* LocaleService.swift in Sources */,
 				228C18B52842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift in Sources */,
 				22F109B42840CF4E0090224B /* WeatherProvider.swift in Sources */,
+				22032DBF28437C4600C57AC2 /* Theme.swift in Sources */,
 				22D9CE82283F94D100C70609 /* MainView.swift in Sources */,
 				228C18B32842BFF00092F865 /* MainViewModel.swift in Sources */,
 				22D9CEAE283FD19E00C70609 /* WeatherResponse.swift in Sources */,
-				228C18B02842BFD20092F865 /* MapView.swift in Sources */,
 				22D9CE80283F94D100C70609 /* SolApp.swift in Sources */,
 				22D9CEB0283FDB5F00C70609 /* ForecastResponse.swift in Sources */,
 			);
