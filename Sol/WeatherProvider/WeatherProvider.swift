@@ -6,6 +6,7 @@
 //
 
 import MapKit
+import SwiftUI
 import Foundation
 
 protocol NetworkSession {
@@ -32,5 +33,9 @@ final class WeatherProvider {
     func fetchForecast(coordinates: CLLocationCoordinate2D) async throws -> [Weather] {
         let response = try await self.weatherService.fetchForecast(coordinates: coordinates)
         return response.forecast.map({ Weather(response: $0, locale: self.locale) })
+    }
+
+    func fetchWeatherIcon(weather: Weather) async throws -> Image {
+        try await self.weatherService.fetchWeatherIcon(weather.icon)
     }
 }
