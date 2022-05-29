@@ -19,6 +19,8 @@ final class WeatherService {
     }
     
     private let networkSession: NetworkSession
+
+    private let locale: LocaleService
     
     let apiURL: String
 
@@ -26,7 +28,7 @@ final class WeatherService {
     
     let apiKey: String
     
-    init(networkSession: NetworkSession) throws {
+    init(networkSession: NetworkSession, locale: LocaleService) throws {
         guard let apiURL = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_URL") as? String else {
             throw Error.missingApiURL
         }
@@ -41,12 +43,13 @@ final class WeatherService {
         self.iconURL = iconURL
         self.apiKey = apiKey
         self.networkSession = networkSession
+        self.locale = locale
     }
     
     func fetchCurrentWeather(coordinates: CLLocationCoordinate2D) async throws -> WeatherResponse {
         let latitude = String(coordinates.latitude)
         let longitude = String(coordinates.longitude)
-        guard let url = URL(string: "\(self.apiURL)/weather?lat=\(latitude)&lon=\(longitude)&appid=\(self.apiKey)") else {
+        guard let url = URL(string: "\(self.apiURL)/weather?lat=\(latitude)&lon=\(longitude)&lang=\(self.locale.language)&appid=\(self.apiKey)") else {
             throw Error.malFormedURL
         }
         let (data, _) = try await self.networkSession.data(from: url, delegate: nil)
@@ -60,7 +63,7 @@ final class WeatherService {
     func fetchForecast(coordinates: CLLocationCoordinate2D) async throws -> ForecastResponse {
         let latitude = String(coordinates.latitude)
         let longitude = String(coordinates.longitude)
-        guard let url = URL(string: "\(self.apiURL)/forecast?lat=\(latitude)&lon=\(longitude)&appid=\(self.apiKey)") else {
+        guard let url = URL(string: "\(self.apiURL)/forecast?lat=\(latitude)&lon=\(longitude)&lang=\(self.locale.language)&appid=\(self.apiKey)") else {
             throw Error.malFormedURL
         }
         let (data, _) = try await self.networkSession.data(from: url, delegate: nil)

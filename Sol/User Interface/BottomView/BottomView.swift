@@ -28,41 +28,41 @@ struct BottomView: View {
             separator
 
             Group {
-                item(label: "temperature", value: "\(weather.temperature) \(weather.temperatureSymbol)")
+                item(label: locale["temperature"], value: "\(weather.temperature) \(weather.temperatureSymbol)")
 
                 separator
 
-                item(label: "real feel", value: "\(weather.realFeel) \(weather.temperatureSymbol)")
+                item(label: locale["real feel"], value: "\(weather.realFeel) \(weather.temperatureSymbol)")
 
                 separator
 
-                item(label: "min", value: "\(weather.minTemperature) \(weather.temperatureSymbol)")
+                item(label: locale["min"], value: "\(weather.minTemperature) \(weather.temperatureSymbol)")
 
                 separator
 
-                item(label: "max", value: "\(weather.maxTemperature) \(weather.temperatureSymbol)")
+                item(label: locale["max"], value: "\(weather.maxTemperature) \(weather.temperatureSymbol)")
 
                 separator
             }
 
             Group {
-                item(label: "pressure", value: "\(String(format: locale.isMetric ? "%.0f" : "%.2f", weather.pressure)) \(weather.pressureSymbol)")
+                item(label: locale["pressure"], value: "\(String(format: locale.isMetric ? "%.0f" : "%.2f", weather.pressure)) \(weather.pressureSymbol)")
 
                 separator
 
-                item(label: "visibility", value: "\(weather.visibility) \(weather.distanceSymbol)")
+                item(label: locale["visibility"], value: "\(weather.visibility) \(weather.distanceSymbol)")
 
                 separator
 
-                item(label: "humidity", value: "\(weather.humidity) \(weather.humiditySymbol)")
+                item(label: locale["humidity"], value: "\(weather.humidity) \(weather.humiditySymbol)")
 
                 separator
 
-                item(label: "wind direction", value: "\(weather.windDirection)\(weather.directionSymbol)")
+                item(label: locale["wind direction"], value: "\(weather.windDirection)\(weather.directionSymbol)")
 
                 separator
 
-                item(label: "wind speed", value: "\(weather.windSpeed) \(weather.speedSymbol)")
+                item(label: locale["wind speed"], value: "\(weather.windSpeed) \(weather.speedSymbol)")
             }
         }
         .background{

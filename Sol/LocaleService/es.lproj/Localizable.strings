@@ -6,4 +6,13 @@
   
 */
 
+"humidity" = "humedad";
+"max" = "máx";
+"min" = "min";
+"pressure" = "presión";
+"real feel" = "sensación real";
 "test string" = "La venganza nunca es plena, mata el alma y la envenena - Don Ramón";
+"temperature" = "temperatura";
+"visibility" = "visibilidad";
+"wind direction" = "dirección del viento";
+"wind speed" = "velocidad del viento";

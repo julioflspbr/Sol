@@ -21,7 +21,7 @@ final class WeatherProvider: ObservableObject {
     private let locale: LocaleService
     
     init(networkSession: NetworkSession = URLSession.shared, locale: LocaleService = LocaleService()) throws {
-        self.weatherService = try WeatherService(networkSession: networkSession)
+        self.weatherService = try WeatherService(networkSession: networkSession, locale: locale)
         self.locale = locale
     }
     
