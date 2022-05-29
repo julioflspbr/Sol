@@ -1,5 +1,5 @@
 //
-//  WeatherRequests.swift
+//  WeatherServiceTests.swift
 //  SolTests
 //
 //  Created by Júlio César Flores on 26/05/22.
@@ -7,6 +7,7 @@
 
 import XCTest
 import MapKit
+import SwiftUI
 @testable import Sol
 
 final class WeatherRequests: XCTestCase {
@@ -24,7 +25,7 @@ final class WeatherRequests: XCTestCase {
         guard let path = self.testBundle.url(forResource: "weather", withExtension: "json") else {
             throw Error.decode
         }
-        guard let apiURL = appBundle.object(forInfoDictionaryKey: "WEATHER_API_URL") as? String else {
+        guard let apiURL = self.appBundle.object(forInfoDictionaryKey: "WEATHER_API_URL") as? String else {
             throw Error.missingApiURL
         }
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String else {
@@ -62,7 +63,7 @@ final class WeatherRequests: XCTestCase {
         guard let path = self.testBundle.url(forResource: "forecast", withExtension: "json") else {
             throw Error.decode
         }
-        guard let apiURL = appBundle.object(forInfoDictionaryKey: "WEATHER_API_URL") as? String else {
+        guard let apiURL = self.appBundle.object(forInfoDictionaryKey: "WEATHER_API_URL") as? String else {
             throw Error.missingApiURL
         }
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String else {
@@ -124,5 +125,33 @@ final class WeatherRequests: XCTestCase {
         XCTAssertEqual(forecast.forecast[2].humidity, 74)
         XCTAssertEqual(forecast.forecast[2].windSpeed, 7.92)
         XCTAssertEqual(forecast.forecast[2].windDirection, 259)
+    }
+
+    func testFetchWeatherIcon() async throws {
+        // provided
+        guard let iconURL = self.appBundle.object(forInfoDictionaryKey: "WEATHER_ICON_URL") as? String else {
+            throw Error.missingApiURL
+        }
+        guard let weatherPath = self.testBundle.url(forResource: "weather", withExtension: "json") else {
+            throw Error.decode
+        }
+        guard let imagePath = self.testBundle.url(forResource: "weatherIcon", withExtension: "png") else {
+            throw Error.decode
+        }
+
+        let weatherData = try Data(contentsOf: weatherPath)
+        let imageData = try Data(contentsOf: imagePath)
+
+        let decoder = JSONDecoder()
+        let response = try decoder.decode(WeatherResponse.self, from: weatherData)
+        let weather = Weather(response: response, locale: LocaleService())
+        let network = NetworkMock(response: imageData)
+        let weatherProvider = try WeatherProvider(networkSession: network, locale: LocaleService())
+
+        // when
+        _ = try await weatherProvider.fetchWeatherIcon(weather: weather)
+
+        // then
+        XCTAssertEqual(network.queriedURL?.absoluteString, "\(iconURL)/03d@2x.png")
     }
 }

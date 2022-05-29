@@ -1,5 +1,5 @@
 //
-//  WeatherProvider.swift
+//  WeatherTests.swift
 //  SolTests
 //
 //  Created by Júlio César Flores on 27/05/22.
@@ -44,12 +44,12 @@ class WeatherData: XCTestCase {
         
         // parameters that vary by locale
         XCTAssertEqual(weather.visibility, 10)
-        XCTAssertEqual(Int(weather.temperature * 100), 1425)
-        XCTAssertEqual(Int(weather.minTemperature * 100), 1391)
-        XCTAssertEqual(Int(weather.maxTemperature * 100), 1531)
-        XCTAssertEqual(Int(weather.realFeel * 100), 1371)
-        XCTAssertEqual(Int(weather.windSpeed * 100), 806)
-        XCTAssertEqual(Int(weather.windDirection * 100), 224)
+        XCTAssertEqual(weather.temperature, 14)
+        XCTAssertEqual(weather.minTemperature, 14)
+        XCTAssertEqual(weather.maxTemperature, 15)
+        XCTAssertEqual(weather.realFeel, 14)
+        XCTAssertEqual(weather.windSpeed, 8)
+        XCTAssertEqual(weather.windDirection, 2)
     }
     
     func testWeatherDataInImperialUnits() throws {
@@ -79,12 +79,12 @@ class WeatherData: XCTestCase {
         XCTAssertEqual(weather.humidity, 76)
         
         // parameters that vary by locale
-        XCTAssertEqual(Int(weather.visibility * 100), 621)
-        XCTAssertEqual(Int(weather.temperature * 100), 5764)
-        XCTAssertEqual(Int(weather.minTemperature * 100), 5703)
-        XCTAssertEqual(Int(weather.maxTemperature * 100), 5955)
-        XCTAssertEqual(Int(weather.realFeel * 100), 5667)
-        XCTAssertEqual(Int(weather.windSpeed * 100), 501)
-        XCTAssertEqual(Int(weather.windDirection * 100), 224)
+        XCTAssertEqual(weather.visibility, 6)
+        XCTAssertEqual(weather.temperature, 58)
+        XCTAssertEqual(weather.minTemperature, 57)
+        XCTAssertEqual(weather.maxTemperature, 60)
+        XCTAssertEqual(weather.realFeel, 57)
+        XCTAssertEqual(weather.windSpeed, 5)
+        XCTAssertEqual(weather.windDirection, 2)
     }
 }

@@ -9,19 +9,33 @@ import MapKit
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject private var weatherProvider: WeatherProvider
+
     @StateObject private var viewModel = MainViewModel()
 
     var body: some View {
-        MapView(location: $viewModel.location)
-            .onAppear(perform: self.viewModel.requestLocation)
-            .onChange(of: viewModel.location) { (newLocation) in
-                print("Location changed: \(newLocation)")
+        ZStack {
+            Map(coordinateRegion: $viewModel.location)
+                .ignoresSafeArea()
+                .onAppear(perform: viewModel.requestLocation)
+                .onChange(of: viewModel.location) { (newLocation) in
+                    self.viewModel.requestWeather(for: newLocation, weatherProvider: self.weatherProvider)
+                }
+
+            VStack {
+                if let currentWeather = viewModel.weatherData.first {
+                    TopView(weather: currentWeather)
+                }
+
+                Spacer()
             }
+        }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(try! WeatherProvider())
     }
 }

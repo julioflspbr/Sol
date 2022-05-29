@@ -6,18 +6,23 @@
 //
 
 import MapKit
+import SwiftUI
 import Foundation
 
 final class WeatherService {
     enum Error: Swift.Error {
         case missingApiURL
+        case missingIconURL
         case missingApiKey
         case malFormedURL
+        case badIconWeather
     }
     
     private let networkSession: NetworkSession
     
     let apiURL: String
+
+    let iconURL: String
     
     let apiKey: String
     
@@ -28,8 +33,12 @@ final class WeatherService {
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String else {
             throw Error.missingApiKey
         }
+        guard let iconURL = Bundle.main.object(forInfoDictionaryKey: "WEATHER_ICON_URL") as? String else {
+            throw Error.missingIconURL
+        }
         
         self.apiURL = apiURL
+        self.iconURL = iconURL
         self.apiKey = apiKey
         self.networkSession = networkSession
     }
@@ -60,5 +69,18 @@ final class WeatherService {
         let weather = try decoder.decode(ForecastResponse.self, from: data)
         
         return weather
+    }
+
+    func fetchWeatherIcon(_ icon: String) async throws -> Image {
+        guard let url = URL(string: "\(self.iconURL)/\(icon)@2x.png") else {
+            throw Error.malFormedURL
+        }
+
+        let (data, _) = try await self.networkSession.data(from: url, delegate: nil)
+        guard let image = UIImage(data: data) else {
+            throw Error.badIconWeather
+        }
+
+        return Image(uiImage: image)
     }
 }
