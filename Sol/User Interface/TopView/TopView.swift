@@ -8,26 +8,26 @@
 import SwiftUI
 
 struct TopView: View {
-    let temperature: String
-    let location: String
-    let weatherIcon: Image
+    @StateObject private var viewModel = TopViewModel()
+
+    @EnvironmentObject private var weatherProvider: WeatherProvider
+
+    let weather: Weather
 
     var body: some View {
         VStack {
             VStack {
                 HStack {
                     weatherIcon
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
                         .frame(width: 120, height: 100)
                         .padding(.horizontal)
 
                     VStack(alignment: .leading) {
-                        Text(temperature)
+                        Text("\(weather.temperature) \(weather.temperatureSymbol)")
                             .font(.system(size: 30))
                             .foregroundColor(Theme.Colour.text)
 
-                        Text(location)
+                        Text("\(weather.city), \(weather.country)")
                             .font(.system(size: 15))
                             .foregroundColor(Theme.Colour.text)
                     }
@@ -52,15 +52,45 @@ struct TopView: View {
         }
         .frame(maxWidth: .infinity)
         .background(Color.gray)
+        .onAppear {
+            self.viewModel.fetchWeatherIcon(provider: weatherProvider, weather: weather)
+        }
+    }
+
+    private var weatherIcon: some View {
+        Group {
+            if let icon = self.viewModel.weatherIcon {
+                icon
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                ProgressView()
+                    .scaleEffect(2)
+            }
+        }
     }
 }
 
 struct TopView_Previews: PreviewProvider {
     static var previews: some View {
-        TopView(
-            temperature: "10 ºC",
-            location: "London, UK",
-            weatherIcon: Image(systemName: "square")
-        )
+        TopView(weather: Weather(
+            date: Date(),
+            city: "London",
+            country: "UK",
+            weather: "",
+            icon: "03d",
+            humidity: 0,
+            windDirection: 0,
+            visibility: 0,
+            temperature: 12,
+            minTemperature: 0,
+            maxTemperature: 0,
+            realFeel: 0,
+            pressure: 0,
+            windSpeed: 0,
+            pressureSymbol: "",
+            speedSymbol: "",
+            temperatureSymbol: "ºC"
+        ))
     }
 }

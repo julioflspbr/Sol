@@ -10,6 +10,7 @@
 		22032DBF28437C4600C57AC2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22032DBE28437C4600C57AC2 /* Theme.swift */; };
 		22032DC22843AF9A00C57AC2 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22032DC12843AF9A00C57AC2 /* TopView.swift */; };
 		22032DC62843B5E600C57AC2 /* weatherIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22032DC52843B5E600C57AC2 /* weatherIcon.png */; };
+		22032DC82843BCA300C57AC2 /* TopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22032DC72843BCA300C57AC2 /* TopViewModel.swift */; };
 		228C18A82842BE2D0092F865 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 228C18AA2842BE2D0092F865 /* InfoPlist.strings */; };
 		228C18B32842BFF00092F865 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C18B22842BFF00092F865 /* MainViewModel.swift */; };
 		228C18B52842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C18B42842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift */; };
@@ -48,6 +49,7 @@
 		22032DBE28437C4600C57AC2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		22032DC12843AF9A00C57AC2 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		22032DC52843B5E600C57AC2 /* weatherIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weatherIcon.png; sourceTree = "<group>"; };
+		22032DC72843BCA300C57AC2 /* TopViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewModel.swift; sourceTree = "<group>"; };
 		228C18A92842BE2D0092F865 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		228C18AB2842BE4C0092F865 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		228C18AC2842BE4D0092F865 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		22032DC02843AF9A00C57AC2 /* TopView */ = {
 			isa = PBXGroup;
 			children = (
+				22032DC72843BCA300C57AC2 /* TopViewModel.swift */,
 				22032DC12843AF9A00C57AC2 /* TopView.swift */,
 			);
 			path = TopView;
@@ -342,6 +345,7 @@
 				22F109B02840C7210090224B /* Weather.swift in Sources */,
 				229EC2602840074E009972ED /* WeatherService.swift in Sources */,
 				22E8B9A12840A29A00B1E54C /* UnitSystem.swift in Sources */,
+				22032DC82843BCA300C57AC2 /* TopViewModel.swift in Sources */,
 				22E8B99F2840A28A00B1E54C /* LocaleService.swift in Sources */,
 				228C18B52842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift in Sources */,
 				22F109B42840CF4E0090224B /* WeatherProvider.swift in Sources */,

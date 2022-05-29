@@ -16,7 +16,7 @@ protocol NetworkSession {
 extension URLSession: NetworkSession {
 }
 
-final class WeatherProvider {
+final class WeatherProvider: ObservableObject {
     private let weatherService: WeatherService
     private let locale: LocaleService
     
