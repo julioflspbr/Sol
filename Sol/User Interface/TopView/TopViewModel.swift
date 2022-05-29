@@ -9,8 +9,6 @@ import SwiftUI
 import Foundation
 
 final class TopViewModel: ObservableObject {
-    private static let errorImage = Image(systemName: "exclamationmark.icloud")
-
     @Published private(set) var weatherIcon: Image?
 
     func fetchWeatherIcon(provider: WeatherProvider, weather: Weather) {
@@ -23,9 +21,8 @@ final class TopViewModel: ObservableObject {
             } catch {
                 print("WARNING: failed to download weather icon: \(error)")
                 await MainActor.run {
-                    self.weatherIcon = Self.errorImage
+                    self.weatherIcon = Theme.Image.weatherFallback
                 }
-
             }
         }
     }

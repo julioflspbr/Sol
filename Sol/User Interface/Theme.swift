@@ -22,4 +22,10 @@ struct Theme {
             Color("dragHandler")
         }
     }
+
+    struct Image {
+        static var weatherFallback: SwiftUI.Image {
+            Image(systemName: "exclamationmark.icloud")
+        }
+    }
 }
