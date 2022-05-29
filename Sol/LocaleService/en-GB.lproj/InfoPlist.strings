@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Sol
+
+  Created by Júlio César Flores on 28/05/22.
+  
+*/
+
+"NSLocationWhenInUseUsageDescription" = "Retrieve weather to your current location automatically";
