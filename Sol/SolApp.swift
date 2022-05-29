@@ -11,9 +11,12 @@ import SwiftUI
 struct SolApp: App {
     let weatherProvider: WeatherProvider
 
+    let localeService: LocaleService
+
     init() {
         do {
             self.weatherProvider = try WeatherProvider()
+            self.localeService = LocaleService()
         } catch {
             // The only possible error is missing Info.plist entries
             fatalError("ERROR: There are missing keys in Info.plist: \(error)")
@@ -24,6 +27,7 @@ struct SolApp: App {
         WindowGroup {
             MainView()
                 .environmentObject(weatherProvider)
+                .environmentObject(localeService)
         }
     }
 }

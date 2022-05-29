@@ -28,6 +28,10 @@ struct MainView: View {
                 }
 
                 Spacer()
+
+                if let currentWeather = viewModel.weatherData.first {
+                    BottomView(weather: currentWeather)
+                }
             }
         }
     }

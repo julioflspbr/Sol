@@ -34,15 +34,10 @@ struct TopView: View {
 
                 Spacer()
             }
-
-            Capsule()
-                .foregroundColor(Theme.Colour.dragHandler)
-                .frame(width: 40, height: 5, alignment: .center)
-                .padding(.bottom, 10)
         }
         .background {
             LinearGradient(
-                colors: [Theme.Colour.background, Theme.Colour.background.opacity(0.3)],
+                colors: [Theme.Colour.background, Theme.Colour.background.opacity(0.0)],
                 startPoint: .center,
                 endPoint: .bottom
             )
@@ -91,7 +86,8 @@ struct TopView_Previews: PreviewProvider {
                 windSpeed: 0,
                 pressureSymbol: "",
                 speedSymbol: "",
-                temperatureSymbol: "ºC"
+                temperatureSymbol: "ºC",
+                distanceSymbol: ""
             ))
             .environmentObject(try! WeatherProvider())
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LocaleService {
+final class LocaleService: ObservableObject {
     static let weatherStandards = UnitSystem(temperature: .kelvin, pressure: .hectopascals, distance: .meters, speed: .metersPerSecond)
     
     static let metricStandards = UnitSystem(temperature: .celsius, pressure: .hectopascals, distance: .kilometers, speed: .kilometersPerHour)
@@ -45,5 +45,9 @@ final class LocaleService {
     
     subscript(_ key: String) -> String {
         self.localBundle.localizedString(forKey: key, value: nil, table: nil)
+    }
+
+    var isMetric: Bool {
+        self.locale.usesMetricSystem
     }
 }

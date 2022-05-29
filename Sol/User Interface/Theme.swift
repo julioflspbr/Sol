@@ -15,7 +15,11 @@ struct Theme {
         }
 
         static var text: Color {
-            Color("text")
+            Color("primary")
+        }
+
+        static var primary: Color {
+            Color("primary")
         }
 
         static var dragHandler: Color {
@@ -25,7 +29,7 @@ struct Theme {
 
     struct Image {
         static var weatherFallback: SwiftUI.Image {
-            Image(systemName: "exclamationmark.icloud")
+            SwiftUI.Image(systemName: "exclamationmark.icloud")
         }
     }
 }

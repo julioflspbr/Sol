@@ -50,6 +50,8 @@ struct Weather: Equatable {
     let speedSymbol: String
     
     let temperatureSymbol: String
+
+    let distanceSymbol: String
     
     // MARK: - Initialiser
     init(response: WeatherResponse, locale: LocaleService) {
@@ -80,6 +82,7 @@ struct Weather: Equatable {
         self.pressureSymbol = locale.unitSystem.pressure.symbol
         self.speedSymbol = locale.unitSystem.speed.symbol
         self.temperatureSymbol = locale.unitSystem.temperature.symbol
+        self.distanceSymbol = locale.unitSystem.distance.symbol
     }
 
 
@@ -101,7 +104,8 @@ struct Weather: Equatable {
         windSpeed: Int,
         pressureSymbol: String,
         speedSymbol: String,
-        temperatureSymbol: String
+        temperatureSymbol: String,
+        distanceSymbol: String
     ) {
         self.date = date
         self.city = city
@@ -120,5 +124,6 @@ struct Weather: Equatable {
         self.pressureSymbol = pressureSymbol
         self.speedSymbol = speedSymbol
         self.temperatureSymbol = temperatureSymbol
+        self.distanceSymbol = distanceSymbol
     }
 }
