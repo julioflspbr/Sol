@@ -12,7 +12,13 @@ struct TopView: View {
 
     @EnvironmentObject private var weatherProvider: WeatherProvider
 
-    let weather: Weather
+    @Binding private(set) var weatherIndex: Int
+
+    let weatherData: [Weather]
+
+    private var weather: Weather {
+        self.weatherData[self.weatherIndex]
+    }
 
     var body: some View {
         VStack {
@@ -34,15 +40,10 @@ struct TopView: View {
 
                 Spacer()
             }
-
-            Capsule()
-                .foregroundColor(Theme.Colour.dragHandler)
-                .frame(width: 40, height: 5, alignment: .center)
-                .padding(.bottom, 10)
         }
         .background {
             LinearGradient(
-                colors: [Theme.Colour.background, Theme.Colour.background.opacity(0.3)],
+                colors: [Theme.Colour.background, Theme.Colour.background.opacity(0.0)],
                 startPoint: .center,
                 endPoint: .bottom
             )
@@ -74,25 +75,29 @@ struct TopView: View {
 struct TopView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TopView(weather: Weather(
-                date: Date(),
-                city: "London",
-                country: "UK",
-                weather: "",
-                icon: "03d",
-                humidity: 0,
-                windDirection: 0,
-                visibility: 0,
-                temperature: 12,
-                minTemperature: 0,
-                maxTemperature: 0,
-                realFeel: 0,
-                pressure: 0,
-                windSpeed: 0,
-                pressureSymbol: "",
-                speedSymbol: "",
-                temperatureSymbol: "ºC"
-            ))
+            TopView(
+                weatherIndex: .constant(0),
+                weatherData: [Weather(
+                    date: Date(),
+                    city: "London",
+                    country: "UK",
+                    weather: "",
+                    icon: "03d",
+                    humidity: 0,
+                    windDirection: 0,
+                    visibility: 0,
+                    temperature: 12,
+                    minTemperature: 0,
+                    maxTemperature: 0,
+                    realFeel: 0,
+                    pressure: 0,
+                    windSpeed: 0,
+                    pressureSymbol: "",
+                    speedSymbol: "",
+                    temperatureSymbol: "ºC",
+                    distanceSymbol: ""
+                )]
+            )
             .environmentObject(try! WeatherProvider())
 
             Spacer()

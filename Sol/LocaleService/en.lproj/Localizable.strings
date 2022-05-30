@@ -6,4 +6,13 @@
   
 */
 
+"humidity" = "humidity";
+"max" = "max";
+"min" = "min";
+"pressure" = "pressure";
+"real feel" = "real feel";
 "test string" = "Revenge is never plenty, it kills the soul and poisons it - Don Ramón";
+"temperature" = "temperature";
+"visibility" = "visibility";
+"wind direction" = "wind direction";
+"wind speed" = "wind speed";

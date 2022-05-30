@@ -6,4 +6,13 @@
   
 */
 
+"humidity" = "umidade";
+"max" = "máx";
+"min" = "min";
+"pressure" = "pressão";
+"real feel" = "sensação térmica";
 "test string" = "A vingança nunca é plena, mata a alma e a envenena - Seu Madruga";
+"temperature" = "temperatura";
+"visibility" = "visibilidade";
+"wind direction" = "direção do vento";
+"wind speed" = "velocidade do vento";

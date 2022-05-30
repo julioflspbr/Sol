@@ -21,9 +21,13 @@ final class MainViewModel: NSObject, ObservableObject {
     // MARK: - internal attributes
     private var weatherDebouncer: Timer?
 
+    private var loadingDebouncer: Timer?
+
     private let locationManager = CLLocationManager()
 
     // MARK: - published attributes
+    @Published var isLoading = true
+
     @Published var location = defaultRegion
 
     @Published private(set) var weatherData = [Weather]()
@@ -52,6 +56,12 @@ final class MainViewModel: NSObject, ObservableObject {
     func requestWeather(for coordinates: MKCoordinateRegion, weatherProvider: WeatherProvider) {
         self.weatherDebouncer?.invalidate()
         self.weatherDebouncer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { [unowned self] _ in
+            self.loadingDebouncer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { [unowned self] _ in
+                withAnimation {
+                    self.isLoading = true
+                }
+            })
+
             Task {
                 do {
                     async let weather = weatherProvider.fetchWeather(coordinates: coordinates.center)
@@ -59,7 +69,11 @@ final class MainViewModel: NSObject, ObservableObject {
                     let weatherData = try await [weather] + forecast
 
                     await MainActor.run {
-                        self.weatherData = weatherData
+                        withAnimation {
+                            self.weatherData = weatherData
+                            self.loadingDebouncer?.invalidate()
+                            self.isLoading = false
+                        }
                     }
                 } catch {
                     // TODO: error handling

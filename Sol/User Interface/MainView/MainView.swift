@@ -13,22 +13,53 @@ struct MainView: View {
 
     @StateObject private var viewModel = MainViewModel()
 
+    @State private var selectedIndex: Int = 0
+
     var body: some View {
-        ZStack {
-            Map(coordinateRegion: $viewModel.location)
-                .ignoresSafeArea()
-                .onAppear(perform: viewModel.requestLocation)
-                .onChange(of: viewModel.location) { (newLocation) in
-                    self.viewModel.requestWeather(for: newLocation, weatherProvider: self.weatherProvider)
-                }
+        GeometryReader { (proxy) in
+            ZStack {
+                Map(coordinateRegion: $viewModel.location)
+                    .ignoresSafeArea()
+                    .onAppear(perform: viewModel.requestLocation)
+                    .onChange(of: viewModel.location) { (newLocation) in
+                        self.viewModel.requestWeather(for: newLocation, weatherProvider: self.weatherProvider)
+                    }
 
-            VStack {
-                if let currentWeather = viewModel.weatherData.first {
-                    TopView(weather: currentWeather)
-                }
+                VStack {
+                    if viewModel.weatherData.count > 0 {
+                        TopView(weatherIndex: $selectedIndex, weatherData: viewModel.weatherData)
+                            .padding(.top, proxy.safeAreaInsets.top)
+                    }
 
-                Spacer()
+                    Spacer()
+
+                    if viewModel.weatherData.count > 0 {
+                        BottomView(weatherIndex: $selectedIndex, weatherData: viewModel.weatherData)
+                    }
+                }
             }
+            .overlay {
+                ZStack {
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .scaleEffect(3.0)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Theme.Colour.background)
+                            .transition(.opacity)
+                    }
+                }
+            }
+            .safeAreaInset(edge: .bottom) {
+                Group {
+                    if viewModel.weatherData.count > 0 {
+                        Theme.Colour.background.frame(height: proxy.safeAreaInsets.bottom)
+                    }
+                }
+            }
+            .ignoresSafeArea()
+        }
+        .onChange(of: viewModel.weatherData) { _ in
+            self.selectedIndex = 0
         }
     }
 }

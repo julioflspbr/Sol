@@ -15,11 +15,25 @@ struct Theme {
         }
 
         static var text: Color {
-            Color("text")
+            Color("primary")
+        }
+
+        static var primary: Color {
+            Color("primary")
+        }
+
+        static var disabled: Color {
+            Color("disabled")
         }
 
         static var dragHandler: Color {
             Color("dragHandler")
+        }
+    }
+
+    struct Image {
+        static var weatherFallback: SwiftUI.Image {
+            SwiftUI.Image(systemName: "exclamationmark.icloud")
         }
     }
 }
