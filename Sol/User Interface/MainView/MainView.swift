@@ -38,6 +38,17 @@ struct MainView: View {
                     }
                 }
             }
+            .overlay {
+                ZStack {
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .scaleEffect(3.0)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Theme.Colour.background)
+                            .transition(.opacity)
+                    }
+                }
+            }
             .safeAreaInset(edge: .bottom) {
                 Group {
                     if viewModel.weatherData.count > 0 {
