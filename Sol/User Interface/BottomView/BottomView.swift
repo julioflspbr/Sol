@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct BottomView: View {
+    private static let initialHeight: CGFloat = 227
+
+    private static let dragTreshold: CGFloat = 50
+
     @EnvironmentObject private var locale: LocaleService
+
+    @State private var currentHeight = Self.initialHeight
+
+    @State private var heightOffset = Self.initialHeight
+
+    @State private var isExpanded = false
 
     @Binding private(set) var weatherIndex: Int
 
@@ -69,6 +79,8 @@ struct BottomView: View {
                 separator
 
                 item(label: locale["wind speed"], value: "\(weather.windSpeed) \(weather.speedSymbol)")
+
+                separator
             }
         }
         .background{
@@ -77,6 +89,13 @@ struct BottomView: View {
                 .shadow(radius: 5)
                 .ignoresSafeArea()
         }
+        .offset(x: 0.0, y: heightOffset)
+        .animation(.easeOut(duration: 0.1), value: self.isExpanded)
+        .gesture(
+            DragGesture()
+                .onChanged(self.fenceOffset(drag:))
+                .onEnded(self.finishDrag(drag:))
+        )
     }
 
     private var header: some View {
@@ -147,6 +166,32 @@ struct BottomView: View {
         )
         .frame(maxWidth: .infinity, maxHeight: 1)
         .padding(0)
+    }
+
+    private func fenceOffset(drag: DragGesture.Value) {
+        self.heightOffset = max(self.currentHeight + drag.translation.height, 0)
+        self.heightOffset = min(self.heightOffset, Self.initialHeight)
+    }
+
+    private func finishDrag(drag: DragGesture.Value) {
+        let isWithinBoundaries = (self.currentHeight + drag.translation.height >= 0) && (self.currentHeight + drag.translation.height <= Self.initialHeight)
+        let isWideEnough = abs(drag.translation.height) > Self.dragTreshold
+
+        guard isWithinBoundaries else {
+            return
+        }
+
+        if isWideEnough {
+            self.isExpanded = !self.isExpanded
+        }
+
+        if self.isExpanded {
+            self.currentHeight = 0
+            self.heightOffset = 0
+        } else {
+            self.currentHeight = Self.initialHeight
+            self.heightOffset = Self.initialHeight
+        }
     }
 }
 
