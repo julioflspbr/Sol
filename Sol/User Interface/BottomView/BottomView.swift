@@ -12,7 +12,11 @@ struct BottomView: View {
 
     private static let dragTreshold: CGFloat = 50
 
+    private let viewModel = BottomViewModel()
+
     @EnvironmentObject private var locale: LocaleService
+
+    @EnvironmentObject private var weatherProvider: WeatherProvider
 
     @State private var currentHeight = Self.initialHeight
 
@@ -38,6 +42,8 @@ struct BottomView: View {
     var body: some View {
         VStack {
             handler
+
+            audioDescription
 
             header
 
@@ -139,9 +145,22 @@ struct BottomView: View {
 
     private var handler: some View {
         Capsule()
-            .foregroundColor(Theme.Colour.dragHandler)
+            .foregroundColor(Theme.Colour.secondary)
             .frame(width: 40, height: 5, alignment: .center)
-            .padding(.top, 10)
+            .padding(10)
+    }
+
+    private var audioDescription: some View {
+        Button(
+            action: {
+                self.viewModel.handleAudioDescription(for: self.weather, weatherProvider: self.weatherProvider, locale: self.locale)
+            },
+            label: {
+                Image(systemName: "speaker.wave.3.fill")
+                    .renderingMode(.template)
+                    .foregroundColor(Theme.Colour.secondary)
+            }
+        )
     }
 
     private func item(label: String, value: String) -> some View {
@@ -207,21 +226,21 @@ struct BottomView_Previews: PreviewProvider {
                     city: "London",
                     country: "UK",
                     weather: "",
-                    description: "",
+                    description: "scattered clouds",
                     icon: "03d",
-                    humidity: 0,
-                    windDirection: 0,
-                    visibility: 0,
-                    temperature: 12,
-                    minTemperature: 0,
-                    maxTemperature: 0,
-                    realFeel: 0,
-                    pressure: 0,
-                    windSpeed: 0,
-                    pressureSymbol: "",
-                    speedSymbol: "",
+                    humidity: 76,
+                    windDirection: 2,
+                    visibility: 10,
+                    temperature: 14,
+                    minTemperature: 14,
+                    maxTemperature: 15,
+                    realFeel: 14,
+                    pressure: 1011,
+                    windSpeed: 8,
+                    pressureSymbol: "hPa",
+                    speedSymbol: "km/h",
                     temperatureSymbol: "ºC",
-                    distanceSymbol: ""
+                    distanceSymbol: "km"
                 )]
             )
             .environmentObject(try! WeatherProvider())

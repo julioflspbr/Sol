@@ -5,6 +5,7 @@
 //  Created by Júlio César Flores on 27/05/22.
 //
 
+import AVFAudio
 import Foundation
 
 final class LocaleService: ObservableObject {
@@ -33,6 +34,8 @@ final class LocaleService: ObservableObject {
         formatter.unitStyle = .long
         return formatter
     }()
+
+    lazy private(set) var voice = AVSpeechSynthesisVoice(language: self.locale.identifier)
 
     var language: String {
         self.locale.languageCode ?? "en"

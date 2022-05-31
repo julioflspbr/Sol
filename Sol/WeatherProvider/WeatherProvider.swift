@@ -46,7 +46,7 @@ final class WeatherProvider: ObservableObject {
         var description = String()
 
         // identification
-        description += "weather for \(weather.city),"
+        description += "\(locale["weather for"]) \(weather.city),"
 
         // time
         if  let day = dateComponents.day,
