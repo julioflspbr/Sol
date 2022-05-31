@@ -6,13 +6,20 @@
   
 */
 
+"day" = "יְוֹם";
+"degrees" = "מעלות";
+"hour" = "שָׁעָה";
 "humidity" = "לחות";
 "max" = "מַקסִימוּם";
+"maximum temperature" = "טמפרטורה מקסימלית";
 "min" = "מִינִימוּם";
+"minimum temperature" = "טמפרטורה מינימלית";
+"percent" = "אָחוּז";
 "pressure" = "לַחַץ";
 "real feel" = "תחושה אמיתית";
 "test string" = "הנקמה לעולם אינה מלאה, היא הורגת את הנשמה ומרעילה אותה - דון רמון";
 "temperature" = "טֶמפֶּרָטוּרָה";
 "visibility" = "רְאוּת";
+"weather for" = "תחזית מזג האוויר עבור";
 "wind direction" = "כיוון הרוח";
 "wind speed" = "מהירות הרוח";

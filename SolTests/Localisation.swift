@@ -53,7 +53,7 @@ class Localisation: XCTestCase {
         XCTAssertEqual(metricSystem.speed, .kilometersPerHour)
         
         XCTAssertEqual(imperialSystem.temperature, .fahrenheit)
-        XCTAssertEqual(imperialSystem.pressure, .millibars)
+        XCTAssertEqual(imperialSystem.pressure, .inchesOfMercury)
         XCTAssertEqual(imperialSystem.distance, .miles)
         XCTAssertEqual(imperialSystem.speed, .milesPerHour)
     }

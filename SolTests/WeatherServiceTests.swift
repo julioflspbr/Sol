@@ -34,14 +34,15 @@ final class WeatherRequests: XCTestCase {
         
         let data = try Data(contentsOf: path)
         let network = NetworkMock(response: data)
-        let service = try WeatherService(networkSession: network)
+        let locale = LocaleService(locale: Locale(identifier: "en-GB"))
+        let service = try WeatherService(networkSession: network, locale: locale)
         let coordinates = CLLocationCoordinate2D(latitude: 55.6178, longitude: 12.5702)
         
         // when
         let weather = try await service.fetchCurrentWeather(coordinates: coordinates)
         
         // then
-        XCTAssertEqual(network.queriedURL?.absoluteString, "\(apiURL)/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&appid=\(apiKey)")
+        XCTAssertEqual(network.queriedURL?.absoluteString, "\(apiURL)/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&lang=\(locale.language)&appid=\(apiKey)")
         XCTAssertEqual(weather.date, Date(timeIntervalSince1970: 1653577971))
         XCTAssertEqual(weather.city, "Tårnby Kommune")
         XCTAssertEqual(weather.country, "DK")
@@ -72,14 +73,15 @@ final class WeatherRequests: XCTestCase {
         
         let data = try Data(contentsOf: path)
         let network = NetworkMock(response: data)
-        let service = try WeatherService(networkSession: network)
+        let locale = LocaleService(locale: Locale(identifier: "pt-BR"))
+        let service = try WeatherService(networkSession: network, locale: locale)
         let coordinates = CLLocationCoordinate2D(latitude: 55.6178, longitude: 12.5702)
         
         // when
         let forecast = try await service.fetchForecast(coordinates: coordinates)
         
         // then
-        XCTAssertEqual(network.queriedURL?.absoluteString, "\(apiURL)/forecast?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&appid=\(apiKey)")
+        XCTAssertEqual(network.queriedURL?.absoluteString, "\(apiURL)/forecast?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&lang=\(locale.language)&appid=\(apiKey)")
         
         XCTAssertEqual(forecast.forecast[0].date, Date(timeIntervalSince1970: 1653577200))
         XCTAssertEqual(forecast.forecast[0].city, "Tårnby Kommune")

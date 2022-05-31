@@ -5,6 +5,7 @@
 //  Created by Júlio César Flores on 27/05/22.
 //
 
+import AVFAudio
 import Foundation
 
 final class LocaleService: ObservableObject {
@@ -19,6 +20,30 @@ final class LocaleService: ObservableObject {
     private let localBundle: Bundle
     
     let unitSystem: UnitSystem
+
+    lazy private(set) var numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = self.locale
+        formatter.numberStyle = .spellOut
+        return formatter
+    }()
+
+    lazy private(set) var measurementFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.locale = self.locale
+        formatter.unitStyle = .long
+        return formatter
+    }()
+
+    lazy private(set) var voice = AVSpeechSynthesisVoice(language: self.locale.identifier)
+
+    var language: String {
+        self.locale.languageCode ?? "en"
+    }
+
+    var isMetric: Bool {
+        self.locale.usesMetricSystem
+    }
     
     init(locale: Locale = .current) {
         let localPath: String
@@ -29,7 +54,7 @@ final class LocaleService: ObservableObject {
                 fatalError("Localisation bundle path is not valid")
             }
             localPath = path
-        } else if let language = locale.languageCode, let code = Bundle.main.localizations.first(where: { $0.starts(with: language) }) {
+        } else if let language = locale.languageCode, let code = Bundle.main.localizations.sorted().first(where: { $0.starts(with: language) }) {
             self.locale = locale
             guard let path = Bundle.main.path(forResource: code, ofType: "lproj") else {
                 fatalError("Localisation bundle path is not valid")
@@ -59,13 +84,5 @@ final class LocaleService: ObservableObject {
     
     subscript(_ key: String) -> String {
         self.localBundle.localizedString(forKey: key, value: nil, table: nil)
-    }
-
-    var language: String {
-        self.locale.languageCode ?? "en"
-    }
-
-    var isMetric: Bool {
-        self.locale.usesMetricSystem
     }
 }

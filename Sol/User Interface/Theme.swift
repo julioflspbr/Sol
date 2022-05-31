@@ -26,8 +26,8 @@ struct Theme {
             Color("disabled")
         }
 
-        static var dragHandler: Color {
-            Color("dragHandler")
+        static var secondary: Color {
+            Color("secondary")
         }
     }
 
