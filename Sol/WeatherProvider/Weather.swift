@@ -17,6 +17,8 @@ struct Weather: Equatable {
     let country: String
     
     let weather: String
+
+    let description: String
     
     let icon: String
     
@@ -59,6 +61,7 @@ struct Weather: Equatable {
         self.city = response.city
         self.country = response.country
         self.weather = response.weather
+        self.description = response.description
         self.icon = response.icon
         self.humidity = Int(response.humidity)
         self.windDirection = Int(response.windSpeed)
@@ -92,6 +95,7 @@ struct Weather: Equatable {
         city: String,
         country: String,
         weather: String,
+        description: String,
         icon: String,
         humidity: Int,
         windDirection: Int,
@@ -111,6 +115,7 @@ struct Weather: Equatable {
         self.city = city
         self.country = country
         self.weather = weather
+        self.description = description
         self.icon = icon
         self.humidity = humidity
         self.windDirection = windDirection

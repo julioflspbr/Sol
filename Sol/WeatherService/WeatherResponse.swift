@@ -13,6 +13,7 @@ struct WeatherResponse: Decodable, DecodableWithConfiguration {
     let country: String
     let visibility: Double
     let weather: String
+    let description: String
     let icon: String
     let temperature: Double
     let minTemperature: Double
@@ -60,6 +61,7 @@ struct WeatherResponse: Decodable, DecodableWithConfiguration {
     
     struct Weather: Decodable {
         let main: String
+        let description: String
         let icon: String
     }
     
@@ -82,6 +84,7 @@ struct WeatherResponse: Decodable, DecodableWithConfiguration {
         
         let weatherMeta = try weather.decode(Array<Weather>.self, forKey: .weather)
         self.weather = weatherMeta[0].main
+        self.description = weatherMeta[0].description
         self.icon = weatherMeta[0].icon
         
         let main = try weather.nestedContainer(keyedBy: WeatherCodingKey.Main.self, forKey: .main)
@@ -109,6 +112,7 @@ struct WeatherResponse: Decodable, DecodableWithConfiguration {
         
         let weatherMeta = try weather.decode(Array<Weather>.self, forKey: .weather)
         self.weather = weatherMeta[0].main
+        self.description = weatherMeta[0].description
         self.icon = weatherMeta[0].icon
         
         let main = try weather.nestedContainer(keyedBy: WeatherCodingKey.Main.self, forKey: .main)

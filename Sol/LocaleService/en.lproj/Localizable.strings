@@ -6,9 +6,15 @@
   
 */
 
+"day" = "day";
+"degrees" = "degrees";
+"hour" = "hour";
 "humidity" = "humidity";
 "max" = "max";
+"maximum temperature" = "maximum temperature";
 "min" = "min";
+"minimum temperature" = "minimum temperature";
+"percent" = "percent";
 "pressure" = "pressure";
 "real feel" = "real feel";
 "test string" = "Revenge is never plenty, it kills the soul and poisons it - Don Ramón";

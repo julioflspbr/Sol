@@ -6,9 +6,15 @@
   
 */
 
+"day" = "dia";
+"degrees" = "graus";
+"hour" = "hora";
 "humidity" = "umidade";
 "max" = "máx";
+"maximum temperature" = "temperatura máxima";
 "min" = "min";
+"minimum temperature" = "temperatura mínima";
+"percent" = "por cento";
 "pressure" = "pressão";
 "real feel" = "sensação térmica";
 "test string" = "A vingança nunca é plena, mata a alma e a envenena - Seu Madruga";

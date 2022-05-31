@@ -6,9 +6,15 @@
   
 */
 
+"day" = "día";
+"degrees" = "grados";
+"hour" = "hora";
 "humidity" = "humedad";
 "max" = "máx";
+"maximum temperature" = "temperatura máxima";
 "min" = "min";
+"minimum temperature" = "temperatura mínima";
+"percent" = "por ciento";
 "pressure" = "presión";
 "real feel" = "sensación real";
 "test string" = "La venganza nunca es plena, mata el alma y la envenena - Don Ramón";

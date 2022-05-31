@@ -207,6 +207,7 @@ struct BottomView_Previews: PreviewProvider {
                     city: "London",
                     country: "UK",
                     weather: "",
+                    description: "",
                     icon: "03d",
                     humidity: 0,
                     windDirection: 0,
