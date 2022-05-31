@@ -10,13 +10,6 @@ import SwiftUI
 import AVFAudio
 import Foundation
 
-protocol NetworkSession {
-    func data(from url: URL, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse)
-}
-
-extension URLSession: NetworkSession {
-}
-
 final class WeatherProvider: ObservableObject {
     private let weatherService: WeatherService
     private let locale: LocaleService
