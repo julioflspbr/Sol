@@ -76,7 +76,6 @@ class WeatherProviderTests: XCTestCase {
         XCTAssertEqual(forecast[0].country, "DK")
         XCTAssertEqual(forecast[0].weather, "Rain")
         XCTAssertEqual(forecast[0].icon, "10d")
-        XCTAssertEqual(forecast[0].pressure, 1011)
         XCTAssertEqual(forecast[0].humidity, 75)
         XCTAssertEqual(forecast[0].visibility, 6)
         XCTAssertEqual(forecast[0].temperature, 56)
@@ -85,13 +84,13 @@ class WeatherProviderTests: XCTestCase {
         XCTAssertEqual(forecast[0].realFeel, 55)
         XCTAssertEqual(forecast[0].windSpeed, 23)
         XCTAssertEqual(forecast[0].windDirection, 10)
+        XCTAssertEqual(Int(forecast[0].pressure * 100), 2985)
         
         XCTAssertEqual(forecast[1].date, Date(timeIntervalSince1970: 1653588000))
         XCTAssertEqual(forecast[1].city, "Tårnby Kommune")
         XCTAssertEqual(forecast[1].country, "DK")
         XCTAssertEqual(forecast[1].weather, "Clouds")
         XCTAssertEqual(forecast[1].icon, "04d")
-        XCTAssertEqual(forecast[1].pressure, 1011)
         XCTAssertEqual(forecast[1].humidity, 72)
         XCTAssertEqual(forecast[1].visibility, 6)
         XCTAssertEqual(forecast[1].temperature, 56)
@@ -100,13 +99,13 @@ class WeatherProviderTests: XCTestCase {
         XCTAssertEqual(forecast[1].realFeel, 55)
         XCTAssertEqual(forecast[1].windSpeed, 20)
         XCTAssertEqual(forecast[1].windDirection, 9)
+        XCTAssertEqual(Int(forecast[1].pressure * 100), 2985)
         
         XCTAssertEqual(forecast[2].date, Date(timeIntervalSince1970: 1653598800))
         XCTAssertEqual(forecast[2].city, "Tårnby Kommune")
         XCTAssertEqual(forecast[2].country, "DK")
         XCTAssertEqual(forecast[2].weather, "Sun")
         XCTAssertEqual(forecast[2].icon, "03n")
-        XCTAssertEqual(forecast[2].pressure, 1010)
         XCTAssertEqual(forecast[2].humidity, 74)
         XCTAssertEqual(forecast[2].visibility, 5)
         XCTAssertEqual(forecast[2].temperature, 53)
@@ -115,5 +114,75 @@ class WeatherProviderTests: XCTestCase {
         XCTAssertEqual(forecast[2].realFeel, 52)
         XCTAssertEqual(forecast[2].windSpeed, 18)
         XCTAssertEqual(forecast[2].windDirection, 7)
+        XCTAssertEqual(Int(forecast[2].pressure * 100), 2982)
+    }
+
+    func testEnglishAudioDescriptionGeneration() throws {
+        // provided
+        let weather = Weather(
+            date: Date(timeIntervalSince1970: 1653577971),
+            city: "London",
+            country: "UK",
+            weather: "",
+            description: "scattered clouds",
+            icon: "03d",
+            humidity: 76,
+            windDirection: 2,
+            visibility: 10,
+            temperature: 14,
+            minTemperature: 14,
+            maxTemperature: 15,
+            realFeel: 14,
+            pressure: 1011,
+            windSpeed: 8,
+            pressureSymbol: "hPa",
+            speedSymbol: "km/h",
+            temperatureSymbol: "ºC",
+            distanceSymbol: "km"
+        )
+
+        let network = NetworkMock(response: Data())
+        let locale = LocaleService(locale: Locale(identifier: "en-GB"))
+        let weatherProvider = try WeatherProvider(networkSession: network, locale: locale)
+
+        // when
+        let audioDescription = weatherProvider.generateAudioDescription(for: weather)
+
+        // then
+        XCTAssertEqual(audioDescription.lowercased(), "weather forecast for london,day twenty-six, hour seventeen,scattered clouds,temperature fourteen degrees celsius,real feel fourteen degrees celsius,minimum temperature fourteen degrees celsius,maximum temperature fifteen degrees celsius,pressure one thousand eleven hectopascals,visibility ten kilometres,humidity seventy-six percent,wind direction two degrees,wind speed eight kilometres per hour.")
+    }
+
+    func testPortugueseAudioDescriptionGeneration() throws {
+        let weather = Weather(
+            date: Date(timeIntervalSince1970: 1653577971),
+            city: "Londres",
+            country: "UK",
+            weather: "",
+            description: "nuvens esparsas",
+            icon: "03d",
+            humidity: 76,
+            windDirection: 2,
+            visibility: 10,
+            temperature: 14,
+            minTemperature: 14,
+            maxTemperature: 15,
+            realFeel: 14,
+            pressure: 1011,
+            windSpeed: 8,
+            pressureSymbol: "hPa",
+            speedSymbol: "km/h",
+            temperatureSymbol: "ºC",
+            distanceSymbol: "km"
+        )
+
+        let network = NetworkMock(response: Data())
+        let locale = LocaleService(locale: Locale(identifier: "pt-BR"))
+        let weatherProvider = try WeatherProvider(networkSession: network, locale: locale)
+
+        // when
+        let audioDescription = weatherProvider.generateAudioDescription(for: weather)
+
+        // then
+        XCTAssertEqual(audioDescription.lowercased(), "previsão do tempo para londres,dia vinte e seis, hora dezessete,nuvens esparsas,temperatura catorze graus celsius,sensação térmica catorze graus celsius,temperatura mínima catorze graus celsius,temperatura máxima quinze graus celsius,pressão mil e onze hectopascais,visibilidade dez quilômetros,umidade setenta e seis por cento,direção do vento dois graus,velocidade do vento oito quilômetros por hora.")
     }
 }

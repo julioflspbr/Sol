@@ -75,7 +75,7 @@ class WeatherData: XCTestCase {
         XCTAssertEqual(weather.icon, "03d")
         
         // invariable parameters
-        XCTAssertEqual(weather.pressure, 1011)
+        XCTAssertEqual(Int(weather.pressure * 100), 2985)
         XCTAssertEqual(weather.humidity, 76)
         
         // parameters that vary by locale
