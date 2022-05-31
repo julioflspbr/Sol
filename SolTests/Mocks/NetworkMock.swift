@@ -16,8 +16,8 @@ final class NetworkMock: NetworkSession {
         self.injectedResponse = response
     }
     
-    func data(from url: URL, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse) {
-        self.queriedURL = url
+    func data(for urlRequest: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse) {
+        self.queriedURL = urlRequest.url
         return (self.injectedResponse, URLResponse())
     }
 }
