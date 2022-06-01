@@ -6,6 +6,7 @@
   
 */
 
+"cancel" = "Cancel";
 "day" = "day";
 "degrees" = "degrees";
 "hour" = "hour";
@@ -19,6 +20,7 @@
 "real feel" = "real feel";
 "test string" = "Revenge is never plenty, it kills the soul and poisons it - Don Ramón";
 "temperature" = "temperature";
+"try again" = "Try again";
 "visibility" = "visibility";
 "weather for" = "weather forecast for";
 "wind direction" = "wind direction";

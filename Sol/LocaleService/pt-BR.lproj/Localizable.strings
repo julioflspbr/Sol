@@ -6,6 +6,7 @@
   
 */
 
+"cancel" = "Cancelar";
 "day" = "dia";
 "degrees" = "graus";
 "hour" = "hora";
@@ -19,6 +20,7 @@
 "real feel" = "sensação térmica";
 "test string" = "A vingança nunca é plena, mata a alma e a envenena - Seu Madruga";
 "temperature" = "temperatura";
+"try again" = "Outra vez";
 "visibility" = "visibilidade";
 "weather for" = "previsão do tempo para";
 "wind direction" = "direção do vento";

@@ -9,7 +9,16 @@ import MapKit
 import SwiftUI
 import Foundation
 
+protocol NetworkSession {
+    func data(for: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse)
+}
+
+extension URLSession: NetworkSession {
+}
+
 final class WeatherService {
+    private static let timeout: TimeInterval = 10.0
+
     enum Error: Swift.Error {
         case missingApiURL
         case missingIconURL
@@ -52,7 +61,8 @@ final class WeatherService {
         guard let url = URL(string: "\(self.apiURL)/weather?lat=\(latitude)&lon=\(longitude)&lang=\(self.locale.language)&appid=\(self.apiKey)") else {
             throw Error.malFormedURL
         }
-        let (data, _) = try await self.networkSession.data(from: url, delegate: nil)
+        let urlRequest = URLRequest(url: url, timeoutInterval: Self.timeout)
+        let (data, _) = try await self.networkSession.data(for: urlRequest, delegate: nil)
         
         let decoder = JSONDecoder()
         let weather = try decoder.decode(WeatherResponse.self, from: data)
@@ -66,7 +76,8 @@ final class WeatherService {
         guard let url = URL(string: "\(self.apiURL)/forecast?lat=\(latitude)&lon=\(longitude)&lang=\(self.locale.language)&appid=\(self.apiKey)") else {
             throw Error.malFormedURL
         }
-        let (data, _) = try await self.networkSession.data(from: url, delegate: nil)
+        let urlRequest = URLRequest(url: url, timeoutInterval: Self.timeout)
+        let (data, _) = try await self.networkSession.data(for: urlRequest, delegate: nil)
         
         let decoder = JSONDecoder()
         let weather = try decoder.decode(ForecastResponse.self, from: data)
@@ -79,7 +90,8 @@ final class WeatherService {
             throw Error.malFormedURL
         }
 
-        let (data, _) = try await self.networkSession.data(from: url, delegate: nil)
+        let urlRequest = URLRequest(url: url, timeoutInterval: Self.timeout)
+        let (data, _) = try await self.networkSession.data(for: urlRequest, delegate: nil)
         guard let image = UIImage(data: data) else {
             throw Error.badIconWeather
         }

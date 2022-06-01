@@ -13,6 +13,7 @@
 		22032DC82843BCA300C57AC2 /* TopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22032DC72843BCA300C57AC2 /* TopViewModel.swift */; };
 		22032DCB2843E38200C57AC2 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22032DCA2843E38200C57AC2 /* BottomView.swift */; };
 		223C37B628467C7600D084D8 /* BottomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C37B528467C7600D084D8 /* BottomViewModel.swift */; };
+		223C37B8284698C000D084D8 /* SolAppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C37B7284698C000D084D8 /* SolAppError.swift */; };
 		228C18A82842BE2D0092F865 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 228C18AA2842BE2D0092F865 /* InfoPlist.strings */; };
 		228C18B32842BFF00092F865 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C18B22842BFF00092F865 /* MainViewModel.swift */; };
 		228C18B52842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C18B42842CCEB0092F865 /* MKCoordinateRegion+Equatable.swift */; };
@@ -54,6 +55,7 @@
 		22032DC72843BCA300C57AC2 /* TopViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewModel.swift; sourceTree = "<group>"; };
 		22032DCA2843E38200C57AC2 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		223C37B528467C7600D084D8 /* BottomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomViewModel.swift; sourceTree = "<group>"; };
+		223C37B7284698C000D084D8 /* SolAppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolAppError.swift; sourceTree = "<group>"; };
 		228C18A92842BE2D0092F865 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		228C18AB2842BE4C0092F865 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		228C18AC2842BE4D0092F865 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -183,9 +185,10 @@
 		22D9CE7E283F94D100C70609 /* Sol */ = {
 			isa = PBXGroup;
 			children = (
-				229EC261284007C6009972ED /* Info.plist */,
-				22D9CE7F283F94D100C70609 /* SolApp.swift */,
 				22D9CE83283F94D400C70609 /* Assets.xcassets */,
+				229EC261284007C6009972ED /* Info.plist */,
+				223C37B7284698C000D084D8 /* SolAppError.swift */,
+				22D9CE7F283F94D100C70609 /* SolApp.swift */,
 				228C18A32842B9390092F865 /* User Interface */,
 				22E8B99D2840A23200B1E54C /* LocaleService */,
 				22F109AE2840C7210090224B /* WeatherProvider */,
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22032DC22843AF9A00C57AC2 /* TopView.swift in Sources */,
+				223C37B8284698C000D084D8 /* SolAppError.swift in Sources */,
 				223C37B628467C7600D084D8 /* BottomViewModel.swift in Sources */,
 				22F109B02840C7210090224B /* Weather.swift in Sources */,
 				229EC2602840074E009972ED /* WeatherService.swift in Sources */,

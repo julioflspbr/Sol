@@ -6,6 +6,7 @@
   
 */
 
+"cancel" = "Cancelar";
 "day" = "día";
 "degrees" = "grados";
 "hour" = "hora";
@@ -19,6 +20,7 @@
 "real feel" = "sensación real";
 "test string" = "La venganza nunca es plena, mata el alma y la envenena - Don Ramón";
 "temperature" = "temperatura";
+"try again" = "Otra vez";
 "visibility" = "visibilidad";
 "weather for" = "pronóstico del tiempo para";
 "wind direction" = "dirección del viento";

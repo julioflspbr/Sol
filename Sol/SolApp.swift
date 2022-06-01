@@ -13,6 +13,8 @@ struct SolApp: App {
 
     let localeService: LocaleService
 
+    @State private var isHandlingError: Bool = false
+
     init() {
         do {
             self.weatherProvider = try WeatherProvider()
@@ -26,6 +28,7 @@ struct SolApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .handleError($isHandlingError, locale: localeService)
                 .environmentObject(weatherProvider)
                 .environmentObject(localeService)
         }

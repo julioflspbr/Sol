@@ -76,8 +76,17 @@ final class MainViewModel: NSObject, ObservableObject {
                         }
                     }
                 } catch {
-                    // TODO: error handling
-                    print(error)
+                    SolAppError.throw(
+                        error: error,
+                        cancelAction: { [weak self] in
+                            withAnimation {
+                                self?.isLoading = false
+                            }
+                        },
+                        retryAction: { [weak self] in
+                            self?.requestWeather(for: coordinates, weatherProvider: weatherProvider)
+                        }
+                    )
                 }
             }
         })
@@ -110,6 +119,16 @@ extension MainViewModel: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // TODO: error handling
+        SolAppError.throw(
+            error: error,
+            cancelAction: { [weak self] in
+                withAnimation {
+                    self?.isLoading = false
+                }
+            },
+            retryAction: { [weak self] in
+                self?.requestLocation()
+            }
+        )
     }
 }
