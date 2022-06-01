@@ -7,3 +7,4 @@
 */
 
 "NSLocationWhenInUseUsageDescription" = "אחזר את מזג האוויר למיקומך הנוכחי באופן אוטומטי";
+"CFBundleDisplayName" = "שמש";
