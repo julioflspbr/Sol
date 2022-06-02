@@ -1,6 +1,6 @@
 # Sol App
 
-Sol App is a weather forecast app. The app uses the [openweathermap.org](https://openweathermap.org) as the data source. The app displays initially the current weather for the current location, as well as the forecast for the next three days, in a three-hourly fashion. The user can choose a different location by browsing the big map in the middle of the screen. The user can optionally see more information or listen to the weather report, by accessing the info view at the bottom.
+Sol is a weather forecast app. The app uses [openweathermap.org](https://openweathermap.org) as the data source. _Sol_ initially displays the weather for the current location, as well as the forecast for the next three days, by three-hour steps. The user can choose a different location by browsing the big map in the middle of the screen. The user can optionally see more information or listen to the weather report, by accessing the info view at the bottom.
 
 ## _System design_
 ![system design](Sol/Assets.xcassets/system-design.png)
