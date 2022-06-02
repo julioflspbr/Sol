@@ -1,5 +1,5 @@
 //
-//  BottomViewModel.swift
+//  InfoViewModel.swift
 //  Sol
 //
 //  Created by Júlio César Flores on 31/05/22.
@@ -8,7 +8,7 @@
 import AVFAudio
 import Foundation
 
-final class BottomViewModel: NSObject {
+final class InfoViewModel: NSObject {
     private var isAudioDescriptionPlaying = false
 
     private let audioDescriptionPlayer = AVSpeechSynthesizer()
@@ -38,7 +38,7 @@ final class BottomViewModel: NSObject {
     }
 }
 
-extension BottomViewModel: AVSpeechSynthesizerDelegate {
+extension InfoViewModel: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         self.isAudioDescriptionPlaying = true
     }

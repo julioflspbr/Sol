@@ -34,7 +34,7 @@ struct MainView: View {
                     Spacer()
 
                     if viewModel.weatherData.count > 0 {
-                        BottomView(weatherIndex: $selectedIndex, weatherData: viewModel.weatherData)
+                        InfoView(weatherIndex: $selectedIndex, weatherData: viewModel.weatherData)
                     }
                 }
             }
