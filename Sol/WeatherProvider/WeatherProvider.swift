@@ -34,7 +34,10 @@ final class WeatherProvider: ObservableObject {
     }
 
     func generateAudioDescription(for weather: Weather) -> String {
-        let dateComponents = Calendar.current.dateComponents([.day, .hour], from: weather.date)
+        var calendar = Calendar.current
+        calendar.timeZone = self.locale.timeZone
+        let dateComponents = calendar.dateComponents([.day, .hour], from: weather.date)
+
 
         var description = String()
 
@@ -60,7 +63,7 @@ final class WeatherProvider: ObservableObject {
         }
 
         // real feel
-        if let realFeel = locale.numberFormatter.string(from: NSNumber(value: weather.temperature)) {
+        if let realFeel = locale.numberFormatter.string(from: NSNumber(value: weather.realFeel)) {
             let unit = locale.measurementFormatter.string(from: locale.unitSystem.temperature)
             description += "\(locale["real feel"]) \(realFeel) \(unit),"
         }

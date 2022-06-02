@@ -142,14 +142,14 @@ class WeatherProviderTests: XCTestCase {
         )
 
         let network = NetworkMock(response: Data())
-        let locale = LocaleService(locale: Locale(identifier: "en-GB"))
+        let locale = LocaleService(locale: Locale(identifier: "en-GB"), timeZone: TimeZone(secondsFromGMT: 0)!)
         let weatherProvider = try WeatherProvider(networkSession: network, locale: locale)
 
         // when
         let audioDescription = weatherProvider.generateAudioDescription(for: weather)
 
         // then
-        XCTAssertEqual(audioDescription.lowercased(), "weather forecast for london,day twenty-six, hour seventeen,scattered clouds,temperature fourteen degrees celsius,real feel fourteen degrees celsius,minimum temperature fourteen degrees celsius,maximum temperature fifteen degrees celsius,pressure one thousand eleven hectopascals,visibility ten kilometres,humidity seventy-six percent,wind direction two degrees,wind speed eight kilometres per hour.")
+        XCTAssertEqual(audioDescription.lowercased(), "weather forecast for london,day twenty-six, hour fifteen,scattered clouds,temperature fourteen degrees celsius,real feel fourteen degrees celsius,minimum temperature fourteen degrees celsius,maximum temperature fifteen degrees celsius,pressure one thousand eleven hectopascals,visibility ten kilometres,humidity seventy-six percent,wind direction two degrees,wind speed eight kilometres per hour.")
     }
 
     func testPortugueseAudioDescriptionGeneration() throws {
@@ -176,13 +176,13 @@ class WeatherProviderTests: XCTestCase {
         )
 
         let network = NetworkMock(response: Data())
-        let locale = LocaleService(locale: Locale(identifier: "pt-BR"))
+        let locale = LocaleService(locale: Locale(identifier: "pt-BR"), timeZone: TimeZone(secondsFromGMT: 0)!)
         let weatherProvider = try WeatherProvider(networkSession: network, locale: locale)
 
         // when
         let audioDescription = weatherProvider.generateAudioDescription(for: weather)
 
         // then
-        XCTAssertEqual(audioDescription.lowercased(), "previsão do tempo para londres,dia vinte e seis, hora dezessete,nuvens esparsas,temperatura catorze graus celsius,sensação térmica catorze graus celsius,temperatura mínima catorze graus celsius,temperatura máxima quinze graus celsius,pressão mil e onze hectopascais,visibilidade dez quilômetros,umidade setenta e seis por cento,direção do vento dois graus,velocidade do vento oito quilômetros por hora.")
+        XCTAssertEqual(audioDescription.lowercased(), "previsão do tempo para londres,dia vinte e seis, hora quinze,nuvens esparsas,temperatura catorze graus celsius,sensação térmica catorze graus celsius,temperatura mínima catorze graus celsius,temperatura máxima quinze graus celsius,pressão mil e onze hectopascais,visibilidade dez quilômetros,umidade setenta e seis por cento,direção do vento dois graus,velocidade do vento oito quilômetros por hora.")
     }
 }

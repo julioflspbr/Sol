@@ -14,12 +14,14 @@ final class LocaleService: ObservableObject {
     static let metricStandards = UnitSystem(temperature: .celsius, pressure: .hectopascals, distance: .kilometers, speed: .kilometersPerHour)
     
     static let imperialStandards = UnitSystem(temperature: .fahrenheit, pressure: .inchesOfMercury, distance: .miles, speed: .milesPerHour)
-    
+
     private let locale: Locale
     
     private let localBundle: Bundle
     
     let unitSystem: UnitSystem
+
+    let timeZone: TimeZone
 
     lazy private(set) var numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -45,7 +47,7 @@ final class LocaleService: ObservableObject {
         self.locale.usesMetricSystem
     }
     
-    init(locale: Locale = .current) {
+    init(locale: Locale = .current, timeZone: TimeZone = .current) {
         let localPath: String
 
         if let language = locale.languageCode, let region = locale.regionCode, Bundle.main.localizations.contains("\(language)-\(region)") {
@@ -74,6 +76,7 @@ final class LocaleService: ObservableObject {
         }
         
         self.localBundle = localBundle
+        self.timeZone = timeZone
         
         if self.locale.usesMetricSystem {
             self.unitSystem = Self.metricStandards
