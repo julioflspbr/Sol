@@ -26,17 +26,17 @@ final class WeatherService {
         case malFormedURL
         case badIconWeather
     }
-    
+
     private let networkSession: NetworkSession
 
     private let locale: LocaleService
-    
+
     let apiURL: String
 
     let iconURL: String
-    
+
     let apiKey: String
-    
+
     init(networkSession: NetworkSession, locale: LocaleService) throws {
         guard let apiURL = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_URL") as? String else {
             throw Error.missingApiURL
@@ -47,14 +47,14 @@ final class WeatherService {
         guard let iconURL = Bundle.main.object(forInfoDictionaryKey: "WEATHER_ICON_URL") as? String else {
             throw Error.missingIconURL
         }
-        
+
         self.apiURL = apiURL
         self.iconURL = iconURL
         self.apiKey = apiKey
         self.networkSession = networkSession
         self.locale = locale
     }
-    
+
     func fetchCurrentWeather(coordinates: CLLocationCoordinate2D) async throws -> WeatherResponse {
         let latitude = String(coordinates.latitude)
         let longitude = String(coordinates.longitude)
@@ -63,13 +63,13 @@ final class WeatherService {
         }
         let urlRequest = URLRequest(url: url, timeoutInterval: Self.timeout)
         let (data, _) = try await self.networkSession.data(for: urlRequest, delegate: nil)
-        
+
         let decoder = JSONDecoder()
         let weather = try decoder.decode(WeatherResponse.self, from: data)
-        
+
         return weather
     }
-    
+
     func fetchForecast(coordinates: CLLocationCoordinate2D) async throws -> ForecastResponse {
         let latitude = String(coordinates.latitude)
         let longitude = String(coordinates.longitude)
@@ -78,10 +78,10 @@ final class WeatherService {
         }
         let urlRequest = URLRequest(url: url, timeoutInterval: Self.timeout)
         let (data, _) = try await self.networkSession.data(for: urlRequest, delegate: nil)
-        
+
         let decoder = JSONDecoder()
         let weather = try decoder.decode(ForecastResponse.self, from: data)
-        
+
         return weather
     }
 

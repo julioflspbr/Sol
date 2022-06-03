@@ -24,7 +24,7 @@ struct SolAppError {
         let notification = Notification(
             name: Self.notificationName,
             object: nil,
-            userInfo: [Self.errorTag : error, Self.retryTag : retryAction, Self.cancelTag : cancelAction]
+            userInfo: [Self.errorTag: error, Self.retryTag: retryAction, Self.cancelTag: cancelAction]
         )
 
         DispatchQueue.main.async {
@@ -35,12 +35,16 @@ struct SolAppError {
     fileprivate static var publisher: AnyPublisher<ErrorPayload, Never> {
         NotificationCenter.default
             .publisher(for: Self.notificationName)
-            .map({
-                (
-                    error: $0.userInfo![Self.errorTag] as! Error,
-                    cancel: $0.userInfo![Self.cancelTag] as! Action,
-                    retry: $0.userInfo![Self.retryTag] as! Action
-                )
+            .compactMap({
+                guard let userInfo = $0.userInfo,
+                      let error = userInfo[Self.errorTag] as? Error,
+                      let cancelAction = userInfo[Self.cancelTag] as? Action,
+                      let retryAction = userInfo[Self.retryTag] as? Action
+                else {
+                    return nil
+                }
+
+                return (error, cancelAction, retryAction)
             })
             .eraseToAnyPublisher()
     }

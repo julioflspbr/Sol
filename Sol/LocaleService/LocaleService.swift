@@ -10,16 +10,18 @@ import Foundation
 
 final class LocaleService: ObservableObject {
     static let weatherStandards = UnitSystem(temperature: .kelvin, pressure: .hectopascals, distance: .meters, speed: .metersPerSecond)
-    
+
     static let metricStandards = UnitSystem(temperature: .celsius, pressure: .hectopascals, distance: .kilometers, speed: .kilometersPerHour)
-    
+
     static let imperialStandards = UnitSystem(temperature: .fahrenheit, pressure: .inchesOfMercury, distance: .miles, speed: .milesPerHour)
-    
+
     private let locale: Locale
-    
+
     private let localBundle: Bundle
-    
+
     let unitSystem: UnitSystem
+
+    let timeZone: TimeZone
 
     lazy private(set) var numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -44,8 +46,8 @@ final class LocaleService: ObservableObject {
     var isMetric: Bool {
         self.locale.usesMetricSystem
     }
-    
-    init(locale: Locale = .current) {
+
+    init(locale: Locale = .current, timeZone: TimeZone = .current) {
         let localPath: String
 
         if let language = locale.languageCode, let region = locale.regionCode, Bundle.main.localizations.contains("\(language)-\(region)") {
@@ -67,21 +69,21 @@ final class LocaleService: ObservableObject {
             }
             localPath = path
         }
-        
 
         guard let localBundle = Bundle(path: localPath) else {
             fatalError("Localisation bundle not found")
         }
-        
+
         self.localBundle = localBundle
-        
+        self.timeZone = timeZone
+
         if self.locale.usesMetricSystem {
             self.unitSystem = Self.metricStandards
         } else {
             self.unitSystem = Self.imperialStandards
         }
     }
-    
+
     subscript(_ key: String) -> String {
         self.localBundle.localizedString(forKey: key, value: nil, table: nil)
     }
