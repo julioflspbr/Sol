@@ -73,6 +73,7 @@ struct TopView: View {
 }
 
 struct TopView_Previews: PreviewProvider {
+    // swiftlint:disable force_try
     static var previews: some View {
         VStack {
             TopView(

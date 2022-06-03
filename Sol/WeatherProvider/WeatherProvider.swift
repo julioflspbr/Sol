@@ -13,17 +13,17 @@ import Foundation
 final class WeatherProvider: ObservableObject {
     private let weatherService: WeatherService
     private let locale: LocaleService
-    
+
     init(networkSession: NetworkSession = URLSession.shared, locale: LocaleService = LocaleService()) throws {
         self.weatherService = try WeatherService(networkSession: networkSession, locale: locale)
         self.locale = locale
     }
-    
+
     func fetchWeather(coordinates: CLLocationCoordinate2D) async throws -> Weather {
         let response = try await self.weatherService.fetchCurrentWeather(coordinates: coordinates)
         return Weather(response: response, locale: self.locale)
     }
-    
+
     func fetchForecast(coordinates: CLLocationCoordinate2D) async throws -> [Weather] {
         let response = try await self.weatherService.fetchForecast(coordinates: coordinates)
         return response.forecast.map({ Weather(response: $0, locale: self.locale) })
@@ -38,7 +38,6 @@ final class WeatherProvider: ObservableObject {
         calendar.timeZone = self.locale.timeZone
         let dateComponents = calendar.dateComponents([.day, .hour], from: weather.date)
 
-
         var description = String()
 
         // identification
@@ -48,8 +47,7 @@ final class WeatherProvider: ObservableObject {
         if  let day = dateComponents.day,
             let hour = dateComponents.hour,
             let dayDescription = locale.numberFormatter.string(from: NSNumber(value: day)),
-            let hourDescription = locale.numberFormatter.string(from: NSNumber(value: hour))
-        {
+            let hourDescription = locale.numberFormatter.string(from: NSNumber(value: hour)) {
             description += "\(locale["day"]) \(dayDescription), \(locale["hour"]) \(hourDescription),"
         }
 

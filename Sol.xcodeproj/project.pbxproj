@@ -270,6 +270,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22D9CEA0283F94D500C70609 /* Build configuration list for PBXNativeTarget "Sol" */;
 			buildPhases = (
+				223C37C22849CD4F00D084D8 /* ShellScript */,
 				22D9CE78283F94D100C70609 /* Sources */,
 				22D9CE79283F94D100C70609 /* Frameworks */,
 				22D9CE7A283F94D100C70609 /* Resources */,
@@ -364,6 +365,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		223C37C22849CD4F00D084D8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint > /dev/null; then\n  swiftlint\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22D9CE78283F94D100C70609 /* Sources */ = {

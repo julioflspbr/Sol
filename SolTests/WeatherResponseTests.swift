@@ -12,7 +12,7 @@ final class ResponseDecoding: XCTestCase {
     enum Error: Swift.Error {
         case decode
     }
-    
+
     let bundle = Bundle(for: ResponseDecoding.self)
 
     func testWeatherDecoding() throws {
@@ -20,13 +20,13 @@ final class ResponseDecoding: XCTestCase {
         guard let path = self.bundle.url(forResource: "weather", withExtension: "json") else {
             throw Error.decode
         }
-        
+
         let data = try Data(contentsOf: path)
         let decoder = JSONDecoder()
-        
+
         // when
         let weather = try decoder.decode(WeatherResponse.self, from: data)
-        
+
         // then
         XCTAssertEqual(weather.date, Date(timeIntervalSince1970: 1653577971))
         XCTAssertEqual(weather.city, "Tårnby Kommune")
@@ -49,13 +49,13 @@ final class ResponseDecoding: XCTestCase {
         guard let path = self.bundle.url(forResource: "forecast", withExtension: "json") else {
             throw Error.decode
         }
-        
+
         let data = try Data(contentsOf: path)
         let decoder = JSONDecoder()
-        
+
         // when
         let forecast = try decoder.decode(ForecastResponse.self, from: data)
-        
+
         // then
         XCTAssertEqual(forecast.forecast[0].date, Date(timeIntervalSince1970: 1653577200))
         XCTAssertEqual(forecast.forecast[0].city, "Tårnby Kommune")
@@ -71,7 +71,7 @@ final class ResponseDecoding: XCTestCase {
         XCTAssertEqual(forecast.forecast[0].humidity, 75)
         XCTAssertEqual(forecast.forecast[0].windSpeed, 10.31)
         XCTAssertEqual(forecast.forecast[0].windDirection, 272)
-        
+
         XCTAssertEqual(forecast.forecast[1].date, Date(timeIntervalSince1970: 1653588000))
         XCTAssertEqual(forecast.forecast[1].city, "Tårnby Kommune")
         XCTAssertEqual(forecast.forecast[1].country, "DK")
@@ -86,7 +86,7 @@ final class ResponseDecoding: XCTestCase {
         XCTAssertEqual(forecast.forecast[1].humidity, 72)
         XCTAssertEqual(forecast.forecast[1].windSpeed, 9.12)
         XCTAssertEqual(forecast.forecast[1].windDirection, 270)
-        
+
         XCTAssertEqual(forecast.forecast[2].date, Date(timeIntervalSince1970: 1653598800))
         XCTAssertEqual(forecast.forecast[2].city, "Tårnby Kommune")
         XCTAssertEqual(forecast.forecast[2].country, "DK")

@@ -13,38 +13,38 @@ class WeatherProviderTests: XCTestCase {
     enum Error: Swift.Error {
         case decode
     }
-    
+
     let bundle = Bundle(for: WeatherProviderTests.self)
-    
+
     func testFetchWeather() async throws {
         // provided
         guard let path = self.bundle.url(forResource: "weather", withExtension: "json") else {
             throw Error.decode
         }
-        
+
         let data = try Data(contentsOf: path)
         let metricLocale = LocaleService(locale: Locale(identifier: "en-GB"))
         let network = NetworkMock(response: data)
         let weatherProvider = try WeatherProvider(networkSession: network, locale: metricLocale)
         let dummyCoords = CLLocationCoordinate2D(latitude: 55.6178, longitude: 12.5702)
-        
+
         // when
         let weather = try await weatherProvider.fetchWeather(coordinates: dummyCoords)
-        
+
         // then
         // then
-        
+
         // identification
         XCTAssertEqual(weather.date, Date(timeIntervalSince1970: 1653577971))
         XCTAssertEqual(weather.city, "Tårnby Kommune")
         XCTAssertEqual(weather.country, "DK")
         XCTAssertEqual(weather.weather, "Clouds")
         XCTAssertEqual(weather.icon, "03d")
-        
+
         // invariable parameters
         XCTAssertEqual(weather.pressure, 1011)
         XCTAssertEqual(weather.humidity, 76)
-        
+
         // parameters that vary by locale
         XCTAssertEqual(weather.visibility, 10)
         XCTAssertEqual(weather.temperature, 14)
@@ -54,22 +54,22 @@ class WeatherProviderTests: XCTestCase {
         XCTAssertEqual(weather.windSpeed, 8)
         XCTAssertEqual(weather.windDirection, 2)
     }
-    
+
     func testFetchForecast() async throws {
         // provided
         guard let path = self.bundle.url(forResource: "forecast", withExtension: "json") else {
             throw Error.decode
         }
-        
+
         let data = try Data(contentsOf: path)
         let imperialLocale = LocaleService(locale: Locale(identifier: "en"))
         let network = NetworkMock(response: data)
         let weatherProvider = try WeatherProvider(networkSession: network, locale: imperialLocale)
         let dummyCoords = CLLocationCoordinate2D(latitude: 55.6178, longitude: 12.5702)
-        
+
         // when
         let forecast = try await weatherProvider.fetchForecast(coordinates: dummyCoords)
-        
+
         // then
         XCTAssertEqual(forecast[0].date, Date(timeIntervalSince1970: 1653577200))
         XCTAssertEqual(forecast[0].city, "Tårnby Kommune")
@@ -85,7 +85,7 @@ class WeatherProviderTests: XCTestCase {
         XCTAssertEqual(forecast[0].windSpeed, 23)
         XCTAssertEqual(forecast[0].windDirection, 10)
         XCTAssertEqual(Int(forecast[0].pressure * 100), 2985)
-        
+
         XCTAssertEqual(forecast[1].date, Date(timeIntervalSince1970: 1653588000))
         XCTAssertEqual(forecast[1].city, "Tårnby Kommune")
         XCTAssertEqual(forecast[1].country, "DK")
@@ -100,7 +100,7 @@ class WeatherProviderTests: XCTestCase {
         XCTAssertEqual(forecast[1].windSpeed, 20)
         XCTAssertEqual(forecast[1].windDirection, 9)
         XCTAssertEqual(Int(forecast[1].pressure * 100), 2985)
-        
+
         XCTAssertEqual(forecast[2].date, Date(timeIntervalSince1970: 1653598800))
         XCTAssertEqual(forecast[2].city, "Tårnby Kommune")
         XCTAssertEqual(forecast[2].country, "DK")

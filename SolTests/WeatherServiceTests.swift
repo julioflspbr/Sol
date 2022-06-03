@@ -16,7 +16,7 @@ final class WeatherRequests: XCTestCase {
         case missingApiURL
         case missingApiKey
     }
-    
+
     let appBundle = Bundle.main
     let testBundle = Bundle(for: ResponseDecoding.self)
 
@@ -31,16 +31,16 @@ final class WeatherRequests: XCTestCase {
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String else {
             throw Error.missingApiKey
         }
-        
+
         let data = try Data(contentsOf: path)
         let network = NetworkMock(response: data)
         let locale = LocaleService(locale: Locale(identifier: "en-GB"))
         let service = try WeatherService(networkSession: network, locale: locale)
         let coordinates = CLLocationCoordinate2D(latitude: 55.6178, longitude: 12.5702)
-        
+
         // when
         let weather = try await service.fetchCurrentWeather(coordinates: coordinates)
-        
+
         // then
         XCTAssertEqual(network.queriedURL?.absoluteString, "\(apiURL)/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&lang=\(locale.language)&appid=\(apiKey)")
         XCTAssertEqual(weather.date, Date(timeIntervalSince1970: 1653577971))
@@ -58,7 +58,7 @@ final class WeatherRequests: XCTestCase {
         XCTAssertEqual(weather.windSpeed, 2.24)
         XCTAssertEqual(weather.windDirection, 305)
     }
-    
+
     func testForecastRequest() async throws {
         // provided
         guard let path = self.testBundle.url(forResource: "forecast", withExtension: "json") else {
@@ -70,19 +70,19 @@ final class WeatherRequests: XCTestCase {
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String else {
             throw Error.missingApiKey
         }
-        
+
         let data = try Data(contentsOf: path)
         let network = NetworkMock(response: data)
         let locale = LocaleService(locale: Locale(identifier: "pt-BR"))
         let service = try WeatherService(networkSession: network, locale: locale)
         let coordinates = CLLocationCoordinate2D(latitude: 55.6178, longitude: 12.5702)
-        
+
         // when
         let forecast = try await service.fetchForecast(coordinates: coordinates)
-        
+
         // then
         XCTAssertEqual(network.queriedURL?.absoluteString, "\(apiURL)/forecast?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&lang=\(locale.language)&appid=\(apiKey)")
-        
+
         XCTAssertEqual(forecast.forecast[0].date, Date(timeIntervalSince1970: 1653577200))
         XCTAssertEqual(forecast.forecast[0].city, "Tårnby Kommune")
         XCTAssertEqual(forecast.forecast[0].country, "DK")
@@ -97,7 +97,7 @@ final class WeatherRequests: XCTestCase {
         XCTAssertEqual(forecast.forecast[0].humidity, 75)
         XCTAssertEqual(forecast.forecast[0].windSpeed, 10.31)
         XCTAssertEqual(forecast.forecast[0].windDirection, 272)
-        
+
         XCTAssertEqual(forecast.forecast[1].date, Date(timeIntervalSince1970: 1653588000))
         XCTAssertEqual(forecast.forecast[1].city, "Tårnby Kommune")
         XCTAssertEqual(forecast.forecast[1].country, "DK")
@@ -112,7 +112,7 @@ final class WeatherRequests: XCTestCase {
         XCTAssertEqual(forecast.forecast[1].humidity, 72)
         XCTAssertEqual(forecast.forecast[1].windSpeed, 9.12)
         XCTAssertEqual(forecast.forecast[1].windDirection, 270)
-        
+
         XCTAssertEqual(forecast.forecast[2].date, Date(timeIntervalSince1970: 1653598800))
         XCTAssertEqual(forecast.forecast[2].city, "Tårnby Kommune")
         XCTAssertEqual(forecast.forecast[2].country, "DK")

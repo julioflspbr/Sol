@@ -67,7 +67,7 @@ struct InfoView: View {
                 WeatherInfoItem(label: locale["wind speed"], value: "\(weather.windSpeed) \(weather.speedSymbol)")
             }
         }
-        .background{
+        .background {
             RoundedRectangle(cornerRadius: 15)
                 .foregroundColor(Theme.Colour.background)
                 .shadow(radius: 5)
@@ -110,6 +110,7 @@ struct InfoView: View {
 }
 
 struct BottomView_Previews: PreviewProvider {
+    // swiftlint:disable force_try
     static var previews: some View {
         VStack {
             Spacer()

@@ -13,7 +13,7 @@ struct WeatherInfoSeparator: View {
             stops: [
                 Gradient.Stop(color: Theme.Colour.primary.opacity(0.0), location: 0.0),
                 Gradient.Stop(color: Theme.Colour.primary.opacity(0.5), location: 0.5),
-                Gradient.Stop(color: Theme.Colour.primary.opacity(0.0), location: 1.0),
+                Gradient.Stop(color: Theme.Colour.primary.opacity(0.0), location: 1.0)
             ],
             startPoint: .leading,
             endPoint: .trailing

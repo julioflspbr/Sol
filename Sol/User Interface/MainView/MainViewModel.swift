@@ -13,9 +13,9 @@ import CoreLocation
 final class MainViewModel: NSObject, ObservableObject {
     // MARK: - static attributes
     private static let londonCoordinates = CLLocationCoordinate2D(latitude: 51.5072, longitude: 0.1276)
-    
+
     private static let defaultSpan = CLLocationAccuracy(10000) // ten kilometers
-    
+
     private static let defaultRegion = MKCoordinateRegion(center: londonCoordinates, latitudinalMeters: defaultSpan, longitudinalMeters: defaultSpan)
 
     // MARK: - internal attributes
@@ -102,22 +102,22 @@ extension MainViewModel: CLLocationManagerDelegate {
             self.location = Self.defaultRegion
             return
         }
-        
+
         manager.desiredAccuracy = kCLLocationAccuracyReduced
         manager.requestLocation()
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {
             self.location = Self.defaultRegion
-            return  
+            return
         }
-        
+
         let coordinates = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: Self.defaultSpan, longitudinalMeters: Self.defaultSpan)
         self.location = region
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         SolAppError.throw(
             error: error,

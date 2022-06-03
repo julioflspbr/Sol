@@ -65,6 +65,7 @@ struct MainView: View {
 }
 
 struct MainView_Previews: PreviewProvider {
+    // swiftlint:disable force_try
     static var previews: some View {
         MainView()
             .environmentObject(try! WeatherProvider())
